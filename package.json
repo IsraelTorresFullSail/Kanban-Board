@@ -1,18 +1,26 @@
 {
-  "name": "dws2-kanban-project",
+  "name": "kanban-israeltorresfullsail",
   "version": "1.0.0",
-  "private": true,
   "description": "A kanban board project for the DWS2 class at Full Sail University.",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "gulp",
-    "build": "gulp"
+  "dependencies": {
+    "node-sass": "^4.12.0"
   },
   "devDependencies": {
-    "browser-sync": "^2.26.5",
-    "gulp": "^4.0.2",
-    "gulp-sass": "^4.0.2",
-    "node-sass": "^4.12.0"
-  }
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2"
+  },
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dws2/kanban-IsraelTorresFullSail.git"
+  },
+  "author": "Israel Torres",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dws2/kanban-IsraelTorresFullSail/issues"
+  },
+  "homepage": "https://github.com/dws2/kanban-IsraelTorresFullSail#readme"
 }
