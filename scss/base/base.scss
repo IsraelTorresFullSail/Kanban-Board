@@ -1,0 +1,47 @@
+/* DEFAULTS ====================================== */
+html {
+    background-color: $main-bg-color;
+    font-family: $font-stack;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+}
+
+.container {
+    max-width: 1400px;
+    width: 100%;
+    @extend %center-element;
+}
+
+/* TYPOGRAPHY ===================================== */
+h1 {
+    font-size: $font-size2;
+    color: $strong-color;
+    padding: .5em 0;
+    text-transform: uppercase;
+}
+
+strong {
+    font-size: $font-size1;
+    color: $strong-color;
+    border-left: .25em solid $third-color;
+    padding-left: $standard;
+    margin-left: -$standard;
+}
+
+p {
+    font-size: $font-size1;
+    color: $p-color;
+    line-height: 1.5em;
+}
+
+h4 {
+    font-size: $font-size1;
+    color: $primary-color;
+}
+

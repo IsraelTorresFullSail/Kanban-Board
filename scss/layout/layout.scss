@@ -1,0 +1,225 @@
+/* HEADER ========================================= */
+nav {
+    background-image: $gradient-color;
+    box-shadow: $shadow;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0 $standard;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    li {
+        padding: 1.3em 0;
+        color: $main-bg-color;
+        font-size: $font-size3;
+    }
+
+    .logo {
+        padding: 0.5em 0;
+    }
+}
+
+/* MAIN    ========================================= */
+main {
+    margin-top: 4em;
+    margin-bottom: 0em;
+}
+.mainbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 1.5625em 0; 
+}
+
+.toDo {
+    width: 100%;
+    padding: $standard;
+
+    .cardTop {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 $standard ;
+        border-bottom: 0.0625em solid $primary-color; 
+        background-color: rgba(31,198,177,0.1);
+        @include brs(1.5em, 1.5em, 1.5em, 1.5em);
+    }
+
+    button {
+        display: block;
+        float: right;
+        padding: .5em 1em;
+        font-size: $font-size2;
+        background-color: $primary-color;
+        color: $main-bg-color;
+        border: none;
+        outline:none;
+        margin: 0.625em 0;
+        transition: border-radius .5s, margin-top .5s;
+        @include brs(.5em, .5em, .5em, .5em);
+        cursor: pointer;
+    
+        &:hover {
+            @include brs(1.2em, 1.2em, 1.2em, 1.2em);
+        }
+    }
+
+    @media (min-width: 768px) {
+        width: 46%;
+    }
+
+    @media (min-width: 1024px) {
+        width: 30%;
+    }
+}
+
+.inProgress {
+    width: 100%;
+    padding: $standard;
+
+    .cardTop {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 $standard;
+        border-bottom: 0.0625em solid $fourth-color;
+        background-color: rgba(61,177,201,0.1);
+        @include brs(1.5em, 1.5em, 1.5em, 1.5em);
+    }
+
+    button {
+        display: block;
+        float: right;
+        padding: .5em 1em;
+        font-size: $font-size2;
+        background-color: $fourth-color;
+        color: $main-bg-color;
+        border: none;
+        outline:none;
+        margin: 0.625em 0;
+        transition: border-radius .5s, margin-top .5s;
+        @include brs(.5em, .5em, .5em, .5em);
+        cursor: pointer;
+    
+        &:hover {
+            @include brs(1.2em, 1.2em, 1.2em, 1.2em);
+        }
+    }
+
+    @media (min-width: 768px) {
+        width: 46%;
+    }
+
+    @media (min-width: 1024px) {
+        width: 30%;
+    }
+}
+
+.needReview {
+    width: 100%;
+    padding: $standard;
+
+    .cardTop {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 $standard;
+        border-bottom: 0.0625em solid $secondary-color; 
+        background-color: rgba(8,169,152,0.1);
+        @include brs(1.5em, 1.5em, 1.5em, 1.5em);
+    }
+
+    button {
+        display: block;
+        float: right;
+        padding: .5em 1em;
+        font-size: $font-size2;
+        background-color: $secondary-color;
+        color: $main-bg-color;
+        border: none;
+        outline:none;
+        margin: 0.625em 0;
+        transition: border-radius .5s, margin-top .5s;
+        @include brs(.5em, .5em, .5em, .5em);
+        cursor: pointer;
+    
+        &:hover {
+            @include brs(1.2em, 1.2em, 1.2em, 1.2em);
+        }
+    }
+
+    @media (min-width: 768px) {
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    @media (min-width: 1024px) {
+        width: 30%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+.taskT {
+    background-color: $card-color;
+    margin: 1.25em auto;
+    padding: $standard $standard 0 $standard;
+    box-shadow: $shadow;
+    @include brs(.5em, .5em, .5em, .5em);
+}
+
+.taskI {
+    @extend .taskT;
+}
+
+.taskN {
+    @extend .taskT;
+}
+
+.date {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    border-top-width: 0.0625em;
+    border-top-style: solid;
+    border-image-source: $gradient-color;
+    border-image-slice: 1;
+
+    img {
+        margin: 1.425em 1em;
+    }
+}
+
+/* FOOTER ========================================== */
+footer {
+    // background-color: $card-color;
+    background-image: $gradient-color;
+    box-shadow: $shadow;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: .4em 0;
+}
+
+.copyrght {
+    text-align: center;
+
+    strong {
+        font-size: $font-size2 !important;
+        color: $strong-color;
+        border-left: 0 !important;
+        padding-left: 0 !important;
+        margin-left: 0 !important;
+    }
+}
