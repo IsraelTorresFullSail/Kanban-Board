@@ -1,1 +1,261 @@
-// main.scss
+// Variables
+$primary-color: #1fc6b1;
+$secondary-color: #08a998;
+$third-color: #916046;
+$fourth-color: #3DB1C9;
+$gradient-color: linear-gradient(to right, #08a998, #3DB1C9, #1fc6b1);
+$strong-color: #2f2e3a;
+$p-color: #888888;
+$main-bg-color: #f0f3f5;
+$card-color: #fefefe;
+$shadow: 0 2px 5px 0 rgba(47,46,58,0.16), 0 2px 10px 0 rgba(47,46,58,0.12);
+
+$font-stack: "ubuntu", sans-serif;
+$font-size1: 1em;
+$font-size2: 0.9em;
+$font-size3: 1.3em;
+
+$standard-padding: 0.9375em;
+
+// Mixins
+@mixin brs($topleft, $topright, $bottomleft, $bottomright) { 
+    border-top-left-radius: $topleft;
+    border-top-right-radius: $topright;
+    border-bottom-left-radius: $bottomleft;
+    border-bottom-right-radius: $bottomright;
+}
+
+/* DEFAULTS ====================================== */
+html {
+    background-color: $main-bg-color;
+    font-family: $font-stack;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+}
+
+.container {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    
+}
+
+/* TYPOGRAPHY ===================================== */
+h1 {
+    font-size: $font-size2;
+    color: $strong-color;
+    padding: .5em 0;
+    text-transform: uppercase;
+}
+
+strong {
+    font-size: $font-size1;
+    color: $strong-color;
+    border-left: .25em solid $third-color;
+    padding-left: $standard-padding;
+    margin-left: -$standard-padding;
+}
+
+p {
+    font-size: $font-size1;
+    color: $p-color;
+    line-height: 1.5em;
+}
+
+h4 {
+    font-size: $font-size1;
+    color: $primary-color;
+}
+
+/* HEADER ========================================= */
+nav {
+    background-image: $gradient-color;
+    box-shadow: $shadow;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    li {
+        padding: 1.3em 0;
+        color: $main-bg-color;
+        font-size: $font-size3;
+    }
+
+    .logo {
+        padding: 0.5em 0;
+    }
+}
+
+/* MAIN    ========================================= */
+main {
+    margin-top: 4em;
+    margin-bottom: 4em;
+}
+.mainbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 1.5625em 0;
+}
+
+.toDo {
+    width: 30%;
+    padding: $standard-padding;
+
+    .cardTop {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 $standard-padding ;
+        border-bottom: 0.0625em solid $primary-color; 
+        background-color: rgba(31,198,177,0.1);
+        @include brs(1.5em, 1.5em, 1.5em, 1.5em);
+    }
+
+    button {
+        display: block;
+        float: right;
+        padding: .5em 1em;
+        font-size: $font-size2;
+        background-color: $primary-color;
+        color: $main-bg-color;
+        border: none;
+        outline:none;
+        margin: 0.625em 0;
+        transition: border-radius .5s, margin-top .5s;
+        @include brs(.5em, .5em, .5em, .5em);
+        cursor: pointer;
+    
+        &:hover {
+            @include brs(1.2em, 1.2em, 1.2em, 1.2em);
+        }
+    }
+}
+
+.inProgress {
+    width: 30%;
+    padding: $standard-padding;
+
+    .cardTop {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 $standard-padding;
+        border-bottom: 0.0625em solid $fourth-color;
+        background-color: rgba(61,177,201,0.1);
+        @include brs(1.5em, 1.5em, 1.5em, 1.5em);
+    }
+
+    button {
+        display: block;
+        float: right;
+        padding: .5em 1em;
+        font-size: $font-size2;
+        background-color: $fourth-color;
+        color: $main-bg-color;
+        border: none;
+        outline:none;
+        margin: 0.625em 0;
+        transition: border-radius .5s, margin-top .5s;
+        @include brs(.5em, .5em, .5em, .5em);
+        cursor: pointer;
+    
+        &:hover {
+            @include brs(1.2em, 1.2em, 1.2em, 1.2em);
+        }
+    }
+}
+
+.needReview {
+    width: 30%;
+    padding: $standard-padding;
+
+    .cardTop {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 $standard-padding;
+        border-bottom: 0.0625em solid $secondary-color; 
+        background-color: rgba(8,169,152,0.1);
+        @include brs(1.5em, 1.5em, 1.5em, 1.5em);
+    }
+
+    button {
+        display: block;
+        float: right;
+        padding: .5em 1em;
+        font-size: $font-size2;
+        background-color: $secondary-color;
+        color: $main-bg-color;
+        border: none;
+        outline:none;
+        margin: 0.625em 0;
+        transition: border-radius .5s, margin-top .5s;
+        @include brs(.5em, .5em, .5em, .5em);
+        cursor: pointer;
+    
+        &:hover {
+            @include brs(1.2em, 1.2em, 1.2em, 1.2em);
+        }
+    }
+}
+
+.taskT, .taskI, .taskN {
+    background-color: $card-color;
+    margin: 1.25em auto;
+    padding: $standard-padding $standard-padding 0 $standard-padding;
+    box-shadow: $shadow;
+    @include brs(.5em, .5em, .5em, .5em);
+}
+
+.date {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    img {
+        margin: 1.425em 1em;
+    }
+}
+
+/* FOOTER ========================================== */
+footer {
+    // background-color: $card-color;
+    background-image: $gradient-color;
+    box-shadow: $shadow;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: .4em 0;
+}
+
+.copyrght {
+    text-align: center;
+
+    strong {
+        font-size: $font-size2 !important;
+        color: $strong-color;
+        border-left: 0 !important;
+        padding-left: 0 !important;
+        margin-left: 0 !important;
+    }
+}
