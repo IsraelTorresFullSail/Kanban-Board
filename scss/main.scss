@@ -1,1 +1,10 @@
-// main.scss
+// Utilities
+@import 'utils/vars.scss';
+@import 'utils/mixins.scss';
+@import 'utils/placeholders.scss';
+
+// Base styles
+@import 'base/base.scss';
+
+// Layout styles
+@import 'layout/layout.scss';
