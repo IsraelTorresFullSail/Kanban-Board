@@ -1,0 +1,70 @@
+// Mixins
+@mixin brs($topleft, $topright, $bottomleft, $bottomright) { 
+    border-top-left-radius: $topleft;
+    border-top-right-radius: $topright;
+    border-bottom-left-radius: $bottomleft;
+    border-bottom-right-radius: $bottomright;
+}
+
+@mixin list($task) {
+    @if $task == 1 {
+        .task-list:nth-of-type(1) {
+            .cardTop {
+                border-bottom: 0.0625em solid $primary-color; 
+                background-color: rgba(31,198,177,0.1);
+        
+                button {
+                    background-color: $primary-color;
+                }
+            }
+            @media (min-width: 768px) {
+                width: 46%;
+            }
+        
+            @media (min-width: 1024px) {
+                width: 30%;
+            }
+        }
+    }
+    @else if $task == 2 {
+        .task-list:nth-of-type(2) {
+            .cardTop {
+                border-bottom: 0.0625em solid $fourth-color;
+                background-color: rgba(61,177,201,0.1);
+        
+                button {
+                    background-color: $fourth-color;
+                }
+            }
+            @media (min-width: 768px) {
+                width: 46%;
+            }
+        
+            @media (min-width: 1024px) {
+                width: 30%;
+            }
+        }
+    }
+    @else if $task == 3 {
+        .task-list:nth-of-type(3) {
+            .cardTop {
+                border-bottom: 0.0625em solid $secondary-color; 
+                background-color: rgba(8,169,152,0.1);
+        
+                button {
+                    background-color: $secondary-color;
+                }
+            }
+            @media (min-width: 768px) {
+                width: 50%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            @media (min-width: 1024px) {
+                width: 30%;
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+    }
+}

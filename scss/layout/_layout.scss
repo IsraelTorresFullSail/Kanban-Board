@@ -1,0 +1,120 @@
+/* HEADER ========================================= */
+nav {
+    background-image: $gradient-color;
+    box-shadow: $shadow;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0 $standard;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .logo {
+        padding: 0.5em 0;
+    }
+}
+
+/* MAIN    ========================================= */
+main {
+    margin-top: 4em;
+    margin-bottom: 0;
+}
+
+.mainbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 1.5625em 0 4em 0; 
+}
+
+.task-list {
+    width: 100%;
+    padding: $standard;
+
+    .cardTop {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 $standard ;
+        @include brs(1.5em, 1.5em, 1.5em, 1.5em);
+
+        button {
+            display: block;
+            padding: .5em 1em;
+            font-size: $font-size2;
+            color: $main-bg-color;
+            border: none;
+            margin: 0.625em 0;
+            transition: border-radius .5s, margin-top .5s;
+            @include brs(.5em, .5em, .5em, .5em);
+            cursor: pointer;
+        
+            &:hover {
+                @include brs(1.2em, 1.2em, 1.2em, 1.2em);
+            }
+        }
+    }
+}
+
+@include list(1);
+@include list(2);
+@include list(3);
+
+.taskT {
+    background-color: $card-color;
+    margin: 1.25em auto;
+    padding: $standard $standard 0 $standard;
+    box-shadow: $shadow;
+    @include brs(.5em, .5em, .5em, .5em);
+}
+
+.taskI {
+    @extend .taskT;
+}
+
+.taskN {
+    @extend .taskT;
+}
+
+.date {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    border-top-width: 0.0625em;
+    border-top-style: solid;
+    border-image-source: $gradient-color;
+    border-image-slice: 1;
+
+    img {
+        margin: 1.425em 1em;
+    }
+}
+
+/* FOOTER ========================================== */
+footer {
+    // background-color: $card-color;
+    background-image: $gradient-color;
+    box-shadow: $shadow;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 0;
+    text-align: center;
+
+    h3 {
+        font-size: $font-size2 !important;
+        color: $strong-color;
+        border-left: 0 !important;
+        padding-left: 0 !important;
+    }
+}

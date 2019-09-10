@@ -20,13 +20,19 @@ body {
 
 /* TYPOGRAPHY ===================================== */
 h1 {
+    padding: 0.4em 0;
+    color: $main-bg-color;
+    font-size: $font-size3;
+}
+
+h2 {
     font-size: $font-size2;
     color: $strong-color;
     padding: .5em 0;
     text-transform: uppercase;
 }
 
-strong {
+h3 {
     font-size: $font-size1;
     color: $strong-color;
     border-left: .25em solid $third-color;
@@ -34,14 +40,14 @@ strong {
     margin-left: -$standard;
 }
 
+time {
+    font-size: $font-size1;
+    color: $primary-color;
+    margin: 1.425em 0;
+}
+
 p {
     font-size: $font-size1;
     color: $p-color;
     line-height: 1.5em;
 }
-
-h4 {
-    font-size: $font-size1;
-    color: $primary-color;
-}
-
