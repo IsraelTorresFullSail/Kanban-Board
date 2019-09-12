@@ -25,26 +25,46 @@
         <div id="todoList" class="task-list">
             <div class="cardTop">
                 <h2>To Do</h2>
-                <button>Add task</button>
+                <button class="add-todo">Add task</button>
             </div>
         </div>
         <div id="inProgressList" class="task-list">
             <div class="cardTop">
                 <h2>In Progress</h2>
-                <button>Add task</button>
+                <button class="add-inprog">Add task</button>
             </div>
         </div>
         <div id="needReviewList" class="task-list">
             <div class="cardTop">
                 <h2>Need Review</h2>
-                <button>Add task</button>
+                <button class="add-needrev">Add task</button>
             </div>
         </div>
+
+        <!-- The Modal -->
+        <div id="formModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <form action="#" method="POST">
+                    <input type="text" name="tilte" id="tilte" placeholder="Title *" class="required">
+                
+                    <textarea name="content" id="content" cols="30" rows="10" placeholder="Content..."></textarea>
+                
+                    <input type="datetime" name="dueDate" id="dueDate" placeholder="Due Date *" class="required">
+                    <div class="modalBottom">
+                        <button type="submit">Add</button> 
+                        <button class="close" type="button">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
     </main>
     <footer>
         <h3 class="container">Israel Torres © 2019 Copyright</h3>
     </footer>
 
-    <script src="./api/api.js"></script>
+    <script src="./js/modal.js"></script>
+    <script src="./js/api.js"></script>
 </body>
 </html>

@@ -31,6 +31,8 @@ fetch(urlAPI, option)
                 contentToDo += '<h3>' + data[0].items[i].title + '</h3>';
                 contentToDo += '<p>' + data[0].items[i].description + '</p>';
                 contentToDo += '<div class="date">';
+                    contentToDo += '<button>Edit</button>';
+                    contentToDo += '<button>Delete</button>';
                     contentToDo += '<img src="./images/calendar.png" alt="calendar">';
                     contentToDo += '<time datetime="2019-09-07">' + data[0].items[i].dueDate + '</time>';
                 contentToDo += '</div>';
@@ -40,6 +42,8 @@ fetch(urlAPI, option)
                 contentInProgess += '<h3>' + data[1].items[i].title + '</h3>';
                 contentInProgess += '<p>' + data[1].items[i].description + '</p>';
                 contentInProgess += '<div class="date">';
+                    contentInProgess += '<button>Edit</button>';
+                    contentInProgess += '<button>Delete</button>';
                     contentInProgess += '<img src="./images/calendar.png" alt="calendar">';
                     contentInProgess += '<time datetime="2019-09-07">' + data[1].items[i].dueDate + '</time>';
                 contentInProgess += '</div>';
@@ -49,6 +53,8 @@ fetch(urlAPI, option)
                 contentNeedReview += '<h3>' + data[2].items[i].title + '</h3>';
                 contentNeedReview += '<p>' + data[2].items[i].description + '</p>';
                 contentNeedReview += '<div class="date">';
+                    contentNeedReview += '<button>Edit</button>';
+                    contentNeedReview += '<button>Delete</button>';
                     contentNeedReview += '<img src="./images/calendar.png" alt="calendar">';
                     contentNeedReview += '<time datetime="2019-09-07">' + data[2].items[i].dueDate + '</time>';
                 contentNeedReview += '</div>';

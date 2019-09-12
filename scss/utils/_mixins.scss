@@ -1,11 +1,4 @@
 // Mixins
-@mixin brs($topleft, $topright, $bottomleft, $bottomright) { 
-    border-top-left-radius: $topleft;
-    border-top-right-radius: $topright;
-    border-bottom-left-radius: $bottomleft;
-    border-bottom-right-radius: $bottomright;
-}
-
 @mixin list($task) {
     @if $task == 1 {
         .task-list:nth-of-type(1) {
@@ -15,6 +8,7 @@
         
                 button {
                     background-color: $primary-color;
+                    box-shadow: 0 8px 8px -6px $primary-color;
                 }
             }
             @media (min-width: 768px) {
@@ -34,6 +28,7 @@
         
                 button {
                     background-color: $fourth-color;
+                    box-shadow: 0 8px 8px -6px $fourth-color;
                 }
             }
             @media (min-width: 768px) {
@@ -53,6 +48,7 @@
         
                 button {
                     background-color: $secondary-color;
+                    box-shadow: 0 8px 8px -6px $secondary-color;
                 }
             }
             @media (min-width: 768px) {

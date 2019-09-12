@@ -44,8 +44,8 @@ main {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        padding: 0 $standard ;
-        @include brs(1.5em, 1.5em, 1.5em, 1.5em);
+        padding: 0 $standard;
+        border-radius: 1.5em;
 
         button {
             display: block;
@@ -54,12 +54,13 @@ main {
             color: $main-bg-color;
             border: none;
             margin: 0.625em 0;
-            transition: border-radius .5s, margin-top .5s;
-            @include brs(.5em, .5em, .5em, .5em);
+            //transition: border-radius .5s, margin-top .5s;
+            border-radius: 1.5em;
             cursor: pointer;
+            transition: transform 300ms ease;
         
             &:hover {
-                @include brs(1.2em, 1.2em, 1.2em, 1.2em);
+                transform: scale(1.04);
             }
         }
     }
@@ -74,7 +75,7 @@ main {
     margin: 1.25em auto;
     padding: $standard $standard 0 $standard;
     box-shadow: $shadow;
-    @include brs(.5em, .5em, .5em, .5em);
+    border-radius: .5em;
 }
 
 .taskI {
@@ -96,6 +97,32 @@ main {
 
     img {
         margin: 1.425em 1em;
+    }
+
+    button {
+        font-size: $font-size2;
+        color: $main-bg-color;
+        border: none;
+        margin: 1em 0.5em;
+        border-radius: 1.5em;
+        cursor: pointer;
+        transition: transform 300ms ease;
+
+        &:nth-of-type(1) {
+            padding: .5em 1.7em;
+            background-color: $edit-color;
+            box-shadow: $edit-shadow;
+        }
+
+        &:nth-of-type(2) {
+            padding: .5em 1em;
+            background-color: $delete-color;
+            box-shadow: $delete-shadow;
+        }
+    
+        &:hover {
+            transform: scale(1.04);
+        }
     }
 }
 
