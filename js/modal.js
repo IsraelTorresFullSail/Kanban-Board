@@ -12,14 +12,17 @@ var close = document.querySelector('.close');
 // When the user clicks the button, open the modal
 btnAddT.addEventListener('click', function(){
     modal.style.display = 'block';
+    document.querySelector('#listId').value = 1;
 }) 
 
 btnAddI.addEventListener('click', function(){
     modal.style.display = 'block';
+    document.querySelector('#listId').value = 2;
 }) 
 
 btnAddN.addEventListener('click', function(){
     modal.style.display = 'block';
+    document.querySelector('#listId').value = 3;
 }) 
 
 // When the user clicks on button close, close the modal

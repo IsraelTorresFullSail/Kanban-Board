@@ -40,6 +40,10 @@
                 @extend input;
             }
 
+            #listId {
+                display: none;
+            }
+
             .modalBottom {
                 display: flex;
                 flex-direction: row;

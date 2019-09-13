@@ -234,6 +234,8 @@ footer {
         font-size: 1em;
         color: #2f2e3a;
         line-height: 1.5em; }
+      .modal .modal-content form #listId {
+        display: none; }
       .modal .modal-content form .modalBottom {
         display: flex;
         flex-direction: row;

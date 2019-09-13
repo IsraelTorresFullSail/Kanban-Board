@@ -1,12 +1,15 @@
 // API url
-const urlAPI = 'https://volcano-rosemary.glitch.me/api/lists?accessToken=5b1064585f4ab8706d275f90';
+const base = 'https://rumbling-constrictor.glitch.me/api/';
+const accessToken = '?accessToken=5b1064585f4ab8706d275f90';
+
+const urlAPI = `${base}lists${accessToken}`;
 
 // Methods
 const option = {
     method: 'GET'
 }
 
-// Fetching the API data
+// GET data from API using fetch
 fetch(urlAPI, option)
     .then( response => {
         if(response.ok) {
@@ -25,8 +28,7 @@ fetch(urlAPI, option)
         let contentInProgess = '';
         let contentNeedReview = '';
 
-        for (let i = 0; i < data.length; i++) {
-            
+        for (let i = 0; i < data[0].items.length; i++) {
             contentToDo += '<div class="taskT">';
                 contentToDo += '<h3>' + data[0].items[i].title + '</h3>';
                 contentToDo += '<p>' + data[0].items[i].description + '</p>';
@@ -37,7 +39,8 @@ fetch(urlAPI, option)
                     contentToDo += '<time datetime="2019-09-07">' + data[0].items[i].dueDate + '</time>';
                 contentToDo += '</div>';
             contentToDo += '</div>';
-
+        }
+        for (let i = 0; i < data[1].items.length; i++) {
             contentInProgess += '<div class="taskI">';
                 contentInProgess += '<h3>' + data[1].items[i].title + '</h3>';
                 contentInProgess += '<p>' + data[1].items[i].description + '</p>';
@@ -48,7 +51,8 @@ fetch(urlAPI, option)
                     contentInProgess += '<time datetime="2019-09-07">' + data[1].items[i].dueDate + '</time>';
                 contentInProgess += '</div>';
             contentInProgess += '</div>';
-
+        }
+        for (let i = 0; i < data[2].items.length; i++) {
             contentNeedReview += '<div class="taskN">';
                 contentNeedReview += '<h3>' + data[2].items[i].title + '</h3>';
                 contentNeedReview += '<p>' + data[2].items[i].description + '</p>';
@@ -60,7 +64,7 @@ fetch(urlAPI, option)
                 contentNeedReview += '</div>';
             contentNeedReview += '</div>';
         }
-
+        
         todoList.querySelector('.cardTop').insertAdjacentHTML('afterend', contentToDo);
         inProgressList.querySelector('.cardTop').insertAdjacentHTML('afterend', contentInProgess);
         needReviewList.querySelector('.cardTop').insertAdjacentHTML('afterend', contentNeedReview);
@@ -68,3 +72,51 @@ fetch(urlAPI, option)
     .catch( err => {
         console.log(err);
     })
+
+    // POST data to API using feth
+    function postData(event) {
+        event.preventDefault();
+
+        const urlAPIPost = `${base}items${accessToken}`;
+
+        let form = document.querySelector('#postData');
+        let listId = form.querySelector('#listId').value;
+        let title = form.querySelector('#title').value;
+        let description = form.querySelector('#description').value;
+        let dueDate = form.querySelector('#dueDate').value;
+
+        const dataToSendToServer = {
+            title: title,
+            description: description,
+            dueDate: dueDate,
+            listId: listId,
+        }
+        const config = {
+            method: 'POST',
+            body: JSON.stringify(dataToSendToServer),
+            headers: {
+                'content-type': 'application/json'
+            }
+        }
+        
+        fetch(urlAPIPost, config)
+            .then( response => {
+                if(response.ok) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
+            })
+            .then( responseAsJson => {
+                console.log(responseAsJson);
+            })
+            .catch( err => {
+                console.log(err);
+            })
+
+        // Reset Form
+        document.querySelector('#postData').reset();
+    }
+
+    let pData = document.querySelector('#postData');
+    pData.addEventListener('submit', postData);

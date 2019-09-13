@@ -45,12 +45,14 @@
         <div id="formModal" class="modal">
             <!-- Modal content -->
             <div class="modal-content">
-                <form action="#" method="POST">
-                    <input type="text" name="tilte" id="tilte" placeholder="Title *" class="required">
+                <form id="postData">
+                    <input type="number" name="listId" id="listId">
+
+                    <input type="text" name="title" id="title" placeholder="Title *" class="required">
                 
-                    <textarea name="content" id="content" cols="30" rows="10" placeholder="Content..."></textarea>
+                    <textarea name="description" id="description" cols="30" rows="10" placeholder="Description..."></textarea>
                 
-                    <input type="datetime" name="dueDate" id="dueDate" placeholder="Due Date *" class="required">
+                    <input type="date" name="dueDate" id="dueDate" placeholder="Due Date *" class="required">
                     <div class="modalBottom">
                         <button type="submit">Add</button> 
                         <button class="close" type="button">Close</button>
