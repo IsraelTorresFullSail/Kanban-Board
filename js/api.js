@@ -29,38 +29,38 @@ fetch(urlAPI, option)
         let contentNeedReview = '';
 
         for (let i = 0; i < data[0].items.length; i++) {
-            contentToDo += '<div class="taskT">';
+            contentToDo += '<div class="taskT getId" data-id=' + data[0].items[i].id + '>';
                 contentToDo += '<h3>' + data[0].items[i].title + '</h3>';
                 contentToDo += '<p>' + data[0].items[i].description + '</p>';
                 contentToDo += '<div class="date">';
                     contentToDo += '<button>Edit</button>';
-                    contentToDo += '<button>Delete</button>';
+                    contentToDo += '<button onClick=deleteData()>Delete</button>';
                     contentToDo += '<img src="./images/calendar.png" alt="calendar">';
-                    contentToDo += '<time datetime="2019-09-07">' + data[0].items[i].dueDate + '</time>';
+                    contentToDo += '<time datetime="MM-dd-yyyy">' + data[0].items[i].dueDate + '</time>';
                 contentToDo += '</div>';
             contentToDo += '</div>';
         }
         for (let i = 0; i < data[1].items.length; i++) {
-            contentInProgess += '<div class="taskI">';
+            contentInProgess += '<div class="taskI getId" data-id=' + data[1].items[i].id + '>';
                 contentInProgess += '<h3>' + data[1].items[i].title + '</h3>';
                 contentInProgess += '<p>' + data[1].items[i].description + '</p>';
                 contentInProgess += '<div class="date">';
                     contentInProgess += '<button>Edit</button>';
-                    contentInProgess += '<button>Delete</button>';
+                    contentInProgess += '<button onClick=deleteData()>Delete</button>';
                     contentInProgess += '<img src="./images/calendar.png" alt="calendar">';
-                    contentInProgess += '<time datetime="2019-09-07">' + data[1].items[i].dueDate + '</time>';
+                    contentInProgess += '<time datetime="MM-dd-yyyy">' + data[1].items[i].dueDate + '</time>';
                 contentInProgess += '</div>';
             contentInProgess += '</div>';
         }
         for (let i = 0; i < data[2].items.length; i++) {
-            contentNeedReview += '<div class="taskN">';
+            contentNeedReview += '<div class="taskN getId" data-id=' + data[2].items[i].id + '>';
                 contentNeedReview += '<h3>' + data[2].items[i].title + '</h3>';
                 contentNeedReview += '<p>' + data[2].items[i].description + '</p>';
                 contentNeedReview += '<div class="date">';
                     contentNeedReview += '<button>Edit</button>';
-                    contentNeedReview += '<button>Delete</button>';
+                    contentNeedReview += '<button onClick=deleteData()>Delete</button>';
                     contentNeedReview += '<img src="./images/calendar.png" alt="calendar">';
-                    contentNeedReview += '<time datetime="2019-09-07">' + data[2].items[i].dueDate + '</time>';
+                    contentNeedReview += '<time datetime="MM-dd-yyyy">' + data[2].items[i].dueDate + '</time>';
                 contentNeedReview += '</div>';
             contentNeedReview += '</div>';
         }
@@ -120,3 +120,38 @@ fetch(urlAPI, option)
 
     let pData = document.querySelector('#postData');
     pData.addEventListener('submit', postData);
+
+    // DELETE data from API using feth
+    function deleteData() {
+
+        var task = document.querySelector('.getId');
+        let id = task.getAttribute('data-id');
+        //let id = parseInt(idString);
+
+        const urlAPIDelete = `${base}items/${id}${accessToken}`;
+
+        const configDelete = {
+            method: 'DELETE',
+            headers: {
+                'content-Type': 'application/json'
+            }
+        }
+
+        fetch(urlAPIDelete, configDelete)
+            .then( response => {
+                if(response.ok) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
+            })
+            .then( res => {
+                console.log(res);
+            })
+            .catch( err => {
+                console.log(err);
+            })
+    }
+
+    //let dData = document.querySelector('.taskT button:nth-of-type(2)');
+    //dData.addEventListener('click', deleteData);
