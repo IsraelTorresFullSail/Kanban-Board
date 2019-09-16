@@ -64,8 +64,13 @@
                         background-color: $add-color;
                         box-shadow: $add-shadow;
                     }
-            
+
                     &:nth-of-type(2) {
+                        background-color: $add-color;
+                        box-shadow: $add-shadow;
+                    }
+            
+                    &:nth-of-type(3) {
                         background-color: $delete-color;
                         box-shadow: $close-shadow;
                     }

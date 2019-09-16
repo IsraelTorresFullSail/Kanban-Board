@@ -1,5 +1,5 @@
 // API url
-const base = 'https://rumbling-constrictor.glitch.me/api/';
+const base = 'https://truthful-tapir.glitch.me/api/';
 const accessToken = '?accessToken=5b1064585f4ab8706d275f90';
 
 const urlAPI = `${base}lists${accessToken}`;
@@ -9,7 +9,7 @@ const option = {
     method: 'GET'
 }
 
-// GET data from API using fetch
+// ------------------------ GET data from API using fetch ------------------------ //
 fetch(urlAPI, option)
     .then( response => {
         if(response.ok) {
@@ -33,8 +33,8 @@ fetch(urlAPI, option)
                 contentToDo += '<h3>' + data[0].items[i].title + '</h3>';
                 contentToDo += '<p>' + data[0].items[i].description + '</p>';
                 contentToDo += '<div class="date">';
-                    contentToDo += '<button>Edit</button>';
-                    contentToDo += '<button onClick=deleteData()>Delete</button>';
+                    contentToDo += '<button class="btn-edit" onClick=btnEdit()>Edit</button>';
+                    contentToDo += '<button class="btn-delete" onClick=deleteData()>Delete</button>';
                     contentToDo += '<img src="./images/calendar.png" alt="calendar">';
                     contentToDo += '<time datetime="MM-dd-yyyy">' + data[0].items[i].dueDate + '</time>';
                 contentToDo += '</div>';
@@ -45,8 +45,8 @@ fetch(urlAPI, option)
                 contentInProgess += '<h3>' + data[1].items[i].title + '</h3>';
                 contentInProgess += '<p>' + data[1].items[i].description + '</p>';
                 contentInProgess += '<div class="date">';
-                    contentInProgess += '<button>Edit</button>';
-                    contentInProgess += '<button onClick=deleteData()>Delete</button>';
+                    contentInProgess += '<button class="btn-edit" onClick=btnEdit()>Edit</button>';
+                    contentInProgess += '<button class="btn-delete" onClick=deleteData()>Delete</button>';
                     contentInProgess += '<img src="./images/calendar.png" alt="calendar">';
                     contentInProgess += '<time datetime="MM-dd-yyyy">' + data[1].items[i].dueDate + '</time>';
                 contentInProgess += '</div>';
@@ -57,8 +57,8 @@ fetch(urlAPI, option)
                 contentNeedReview += '<h3>' + data[2].items[i].title + '</h3>';
                 contentNeedReview += '<p>' + data[2].items[i].description + '</p>';
                 contentNeedReview += '<div class="date">';
-                    contentNeedReview += '<button>Edit</button>';
-                    contentNeedReview += '<button onClick=deleteData()>Delete</button>';
+                    contentNeedReview += '<button class="btn-edit" onClick=btnEdit()>Edit</button>';
+                    contentNeedReview += '<button class="btn-delete" onClick=deleteData()>Delete</button>';
                     contentNeedReview += '<img src="./images/calendar.png" alt="calendar">';
                     contentNeedReview += '<time datetime="MM-dd-yyyy">' + data[2].items[i].dueDate + '</time>';
                 contentNeedReview += '</div>';
@@ -73,7 +73,7 @@ fetch(urlAPI, option)
         console.log(err);
     })
 
-    // POST data to API using feth
+// ------------------------ POST data to API using feth ------------------------ //
     function postData(event) {
         event.preventDefault();
 
@@ -118,15 +118,72 @@ fetch(urlAPI, option)
         document.querySelector('#postData').reset();
     }
 
-    let pData = document.querySelector('#postData');
-    pData.addEventListener('submit', postData);
+    // Add Evet Listener to button Add
+    let postD = document.querySelector('.add');
+    postD.addEventListener('click', postData);
 
-    // DELETE data from API using feth
+// ------------------------ PUT data on API using feth ------------------------ //
+    function btnEdit(){
+        modal.style.display = 'block';
+        add.style.display = 'none';
+        save.style.display = 'block';
+    }
+    function putData() {
+
+        let task = document.querySelector('.getId');
+        let id = task.getAttribute('data-id');
+
+        const urlAPIPut = `${base}items/${id}${accessToken}`;
+
+        let form = document.querySelector('#postData');
+        let listId = form.querySelector('#listId').value;
+        let title = form.querySelector('#title').value;
+        let description = form.querySelector('#description').value;
+        let dueDate = form.querySelector('#dueDate').value;
+
+        const dataToPutOnServer = {
+            title: title,
+            description: description,
+            dueDate: dueDate,
+            listId: listId,
+        }
+
+        const configPut = {
+            method: 'PUT',
+            body: JSON.stringify(dataToPutOnServer),
+            headers: {
+                'content-Type': 'application/json'
+            }
+        }
+
+        fetch(urlAPIPut, configPut)
+            .then( response => {
+                if(response.ok) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
+            })
+            .then( resp => {
+                console.log(resp);
+            })
+            .catch( err => {
+                console.log(err);
+            })
+
+        // Reset Form
+        document.querySelector('#postData').reset();
+    }
+
+    // Add Evet Listener to button Save
+    let putD= document.querySelector('.save');
+    putD.addEventListener('click', putData);
+
+// ------------------------ DELETE data from API using feth ------------------------ //
     function deleteData() {
 
-        var task = document.querySelector('.getId');
+        let task = document.querySelector('.getId');
         let id = task.getAttribute('data-id');
-        //let id = parseInt(idString);
 
         const urlAPIDelete = `${base}items/${id}${accessToken}`;
 
@@ -152,6 +209,3 @@ fetch(urlAPI, option)
                 console.log(err);
             })
     }
-
-    //let dData = document.querySelector('.taskT button:nth-of-type(2)');
-    //dData.addEventListener('click', deleteData);
