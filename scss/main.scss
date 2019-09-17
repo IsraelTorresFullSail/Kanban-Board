@@ -1,10 +1,13 @@
 // Utilities
-@import 'utils/vars.scss';
-@import 'utils/mixins.scss';
-@import 'utils/placeholders.scss';
+@import 'utils/_vars.scss';
+@import 'utils/_mixins.scss';
+@import 'utils/_placeholders.scss';
 
 // Base styles
-@import 'base/base.scss';
+@import 'base/_base.scss';
 
 // Layout styles
-@import 'layout/layout.scss';
+@import 'layout/_layout.scss';
+
+// Components styles
+@import 'components/components';

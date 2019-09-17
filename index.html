@@ -15,114 +15,59 @@
         <nav>
             <div class="container">
                 <ul>
-                    <li>Kanban Board</li>
+                    <li><h1>Kanban Board</h1></li>
                     <li class="logo"><img src="./images/logo.png" alt="logo"></li>
                 </ul>
             </div>
         </nav>
     </header>
-    <main>
-        <div class="container">
-            <div class="mainbox">
-                <div class="toDo">
-                    <div class="cardTop">
-                        <h1>To Do</h1>
-                        <button>Add task</button>
-                    </div>
-                    <div class="taskT">
-                        <strong>Task title</strong>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                        <div class="date">
-                            <img src="./images/calendar.png" alt="calendar">
-                            <h4>9/7/2019</h4>
-                        </div>
-                    </div>
-                    <div class="taskT">
-                        <strong>Task title</strong>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                        <div class="date">
-                            <img src="./images/calendar.png" alt="calendar">
-                            <h4>9/7/2019</h4>
-                        </div>
-                    </div>
-                    <div class="taskT">
-                        <strong>Task title</strong>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                        <div class="date">
-                            <img src="./images/calendar.png" alt="calendar">
-                            <h4>9/7/2019</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="inProgress">
-                    <div class="cardTop">
-                        <h1>In Progress</h1>
-                        <button>Add task</button>
-                    </div>
-                    <div class="taskI">
-                        <strong>Task title</strong>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                        <div class="date">
-                            <img src="./images/calendar.png" alt="calendar">
-                            <h4>9/7/2019</h4>
-                        </div>
-                    </div>
-                    <div class="taskI">
-                        <strong>Task title</strong>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                        <div class="date">
-                            <img src="./images/calendar.png" alt="calendar">
-                            <h4>9/7/2019</h4>
-                        </div>
-                    </div>
-                    <div class="taskI">
-                        <strong>Task title</strong>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                        <div class="date">
-                            <img src="./images/calendar.png" alt="calendar">
-                            <h4>9/7/2019</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="needReview">
-                    <div class="cardTop">
-                        <h1>Need Review</h1>
-                        <button>Add task</button>
-                    </div>
-                    <div class="taskN">
-                        <strong>Task title</strong>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                        <div class="date">
-                            <img src="./images/calendar.png" alt="calendar">
-                            <h4>9/7/2019</h4>
-                        </div>
-                    </div>
-                    <div class="taskN">
-                        <strong>Task title</strong>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                        <div class="date">
-                            <img src="./images/calendar.png" alt="calendar">
-                            <h4>9/7/2019</h4>
-                        </div>
-                    </div>
-                    <div class="taskN">
-                        <strong>Task title</strong>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                        <div class="date">
-                            <img src="./images/calendar.png" alt="calendar">
-                            <h4>9/7/2019</h4>
-                        </div>
-                    </div>
-                </div>
+    <main class="container mainbox">
+        <div id="todoList" class="task-list">
+            <div class="cardTop">
+                <h2>To Do</h2>
+                <button class="add-todo">Add task</button>
             </div>
         </div>
+        <div id="inProgressList" class="task-list">
+            <div class="cardTop">
+                <h2>In Progress</h2>
+                <button class="add-inprog">Add task</button>
+            </div>
+        </div>
+        <div id="needReviewList" class="task-list">
+            <div class="cardTop">
+                <h2>Need Review</h2>
+                <button class="add-needrev">Add task</button>
+            </div>
+        </div>
+
+        <!-- The Modal -->
+        <div id="formModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <form id="postData">
+                    <input type="number" name="listId" id="listId">
+
+                    <input type="text" name="title" id="title" placeholder="Title *" class="required">
+                
+                    <textarea name="description" id="description" cols="30" rows="10" placeholder="Description..."></textarea>
+                
+                    <input type="date" name="dueDate" id="dueDate" placeholder="Due Date *" class="required">
+                    <div class="modalBottom">
+                        <button class="add" type="button">Add</button> 
+                        <button class="save" type="button">Save</button>
+                        <button class="close" type="button">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
     </main>
     <footer>
-        <div class="container">
-            <div class="copyrght">
-                <strong>Israel Torres © 2019 Copyright</strong>
-            </div>
-        </div>
+        <h3 class="container">Israel Torres © 2019 Copyright</h3>
     </footer>
+
+    <script src="./js/modal.js"></script>
+    <script src="./js/api.js"></script>
 </body>
 </html>

@@ -1,0 +1,104 @@
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 6.5em; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-image: $gradient-color-opacity; 
+
+    .modal-content {
+        max-width: 1400px;
+        width: 90%;
+        @extend %center-element;
+        background-color: rgba(255,255,255,0.5); 
+        box-shadow: $shadow;
+        border-radius: .5em;
+
+        form {
+            padding: 2em;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            input {
+                margin: 0 0 1em;
+                padding: .6em;
+                background-color: $main-bg-color;
+                border-radius: .5em;
+                border: none;
+                box-shadow: $shadow;
+                font-size: $font-size1;
+                color: $strong-color;
+                line-height: 1.5em;
+            }
+
+            textarea {
+                @extend input;
+            }
+
+            #listId {
+                display: none;
+            }
+
+            .modalBottom {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+
+                button {
+                    width: 25%;
+                    margin: 0 0 0 1em;
+                    padding: 1em;
+                    border-radius: 1.5em;
+                    border: none;
+                    font-size: $font-size2;
+                    color: $main-bg-color;
+                    cursor: pointer;
+                    transition: transform 300ms ease;
+    
+                    &:nth-of-type(1) {
+                        background-color: $add-color;
+                        box-shadow: $add-shadow;
+                    }
+
+                    &:nth-of-type(2) {
+                        background-color: $add-color;
+                        box-shadow: $add-shadow;
+                    }
+            
+                    &:nth-of-type(3) {
+                        background-color: $delete-color;
+                        box-shadow: $close-shadow;
+                    }
+            
+                    &:hover {
+                        transform: scale(1.04);
+                    }
+
+                    @media (min-width: 768px) {
+                        width: 20%;
+                    }
+                
+                    @media (min-width: 1024px) {
+                        width: 15%;
+                    }
+                }
+            }
+        }
+
+        @media (min-width: 768px) {
+            width: 70%;
+        }
+    
+        @media (min-width: 1024px) {
+            width: 50%;
+        }
+    }
+  }
+  
+  
+  
