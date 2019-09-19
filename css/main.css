@@ -150,7 +150,7 @@ main {
     margin-left: 0;
     margin-right: 0; } }
 
-.taskT, .taskI, .taskN {
+.task {
   background-color: #fefefe;
   margin: 1.25em auto;
   padding: 0.9375em 0.9375em 0 0.9375em;

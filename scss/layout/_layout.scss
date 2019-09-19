@@ -70,20 +70,12 @@ main {
 @include list(2);
 @include list(3);
 
-.taskT {
+.task {
     background-color: $card-color;
     margin: 1.25em auto;
     padding: $standard $standard 0 $standard;
     box-shadow: $shadow;
     border-radius: .5em;
-}
-
-.taskI {
-    @extend .taskT;
-}
-
-.taskN {
-    @extend .taskT;
 }
 
 .date {
