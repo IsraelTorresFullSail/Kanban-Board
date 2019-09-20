@@ -91,7 +91,7 @@ main {
     .task-list .cardTop button {
       display: block;
       padding: .5em 1em;
-      font-size: 0.9em;
+      font-size: 1em;
       color: #f0f3f5;
       border: none;
       margin: 0.625em 0;
@@ -166,9 +166,9 @@ main {
   border-image-source: linear-gradient(to right, #08a998, #3DB1C9, #1fc6b1);
   border-image-slice: 1; }
   .date img {
-    margin: 1.425em 1em; }
+    margin: 1.55em 1em; }
   .date button {
-    font-size: 0.9em;
+    font-size: 1em;
     color: #f0f3f5;
     border: none;
     margin: 1em 0.5em;
@@ -246,7 +246,7 @@ footer {
           padding: 1em;
           border-radius: 1.5em;
           border: none;
-          font-size: 0.9em;
+          font-size: 1em;
           color: #f0f3f5;
           cursor: pointer;
           transition: transform 300ms ease; }

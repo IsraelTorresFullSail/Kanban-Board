@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <meta name="description" content="This is a kanban board application created for school assignment">
+    <meta name="keywords" content="HTML5, CSS, SASS, JavaScript, NodeJs, API">
+    <meta name="author" content="Israel Torres">
+    
     <title>Kanban Board</title>
 
     <link rel="stylesheet" href="https://use.typekit.net/rrq6egv.css">
@@ -12,24 +16,24 @@
 </head>
 <body>
     <header>
-        <nav>
+        <nav role="navigation">
             <div class="container">
                 <ul>
                     <li><h1>Kanban Board</h1></li>
-                    <li class="logo"><img src="./images/logo.png" alt="logo"></li>
+                    <li class="logo"><img src="./images/logo.png" alt="logo image"></li>
                 </ul>
             </div>
         </nav>
     </header>
-    <main class="container mainbox">
+    <main class="container mainbox" role="main">
         <!-- Main Content -->
     </main>
     <!-- The Modal -->
-    <div id="formModal" class="modal">
+    <div id="formModal" class="modal" role="complementary" hidden>
         <!-- Modal content -->
         <div class="modal-content">
-            <form id="postData">
-                <input type="number" name="listId" id="listId">
+            <form id="postData" role="form">
+                <input type="number" name="listId" id="listId" tabindex="-1">
 
                 <input type="text" name="title" id="title" area-label="Task title" placeholder="Title *" class="required">
             
@@ -44,7 +48,7 @@
             </form>
         </div>
     </div>
-    <footer>
+    <footer role="contentinfo">
         <h3 class="container">Israel Torres © 2019 Copyright</h3>
     </footer>
 

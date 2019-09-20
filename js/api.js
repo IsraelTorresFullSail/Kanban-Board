@@ -38,7 +38,7 @@ fetch(urlAPI, option)
                         <div class="date">
                             <button class="btn-edit" id="${item.id}">Edit</button>
                             <button class="btn-delete" id="${item.id}">Delete</button>
-                            <img src="./images/calendar.png" alt="calendar">
+                            <img src="./images/calendar.png" alt="calendar icon">
                             <time datetime="${item.dueDate}">${item.dueDate}</time>
                         </div>
                     </div>
@@ -82,7 +82,7 @@ document.querySelector('.mainbox').addEventListener('click', function(e) {
         else if(e.target.id == 3) {
             document.querySelector('#listId').value = 3;
         }
-
+        add.style.display = 'block';
         save.style.display = 'none';
     }
 })
