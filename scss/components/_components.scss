@@ -1,3 +1,4 @@
+// -------------- Modal ------------------ //
 .modal {
     display: none; 
     position: fixed; 
@@ -124,6 +125,66 @@
         }
     }
   }
-  
-  
+
+// -------------- Theme Selector ------------------ //  
+.themes {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    padding: 0.5em 0;
+
+    .select-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-content: center;
+        background-color: #060b17;
+        box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.7);
+        margin: auto 0 auto 1em;
+        padding: .2em;
+        width: 4em;
+        height: 1.6em;
+        border-radius: 1.5em;
+
+        .selector {
+            background-color: $primary-color;
+            width: 40%;
+            height: auto;
+            border-radius: 2em;
+            border: none;
+            cursor: pointer;
+            outline:none;
+        }
+    }
+
+    .select-wrapper-dark {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-content: center;
+        background-color: $primary-color;
+        margin: auto 0 auto 1em;
+        padding: .2em;
+        width: 4em;
+        height: 1.6em;
+        border-radius: 1.5em;
+
+        .selector-dark {
+            background-color: #060b17;
+            width: 40%;
+            height: auto;
+            border-radius: 2em;
+            border: none;
+            cursor: pointer;
+            outline:none;
+        }
+    }
+
+    h2 {
+        color: $main-bg-color;
+        text-transform: capitalize;
+        //padding: 0 !important;
+    }
+}
   
