@@ -35,15 +35,15 @@
             <form id="postData" role="form">
                 <input type="number" name="listId" id="listId" tabindex="-1" required>
                 
-                <input type="text" class="invalid" name="title" id="title" area-label="Task title" placeholder="Title *" required>
+                <input type="text" name="title" id="title" area-label="Task title" placeholder="Title *" required>
             
                 <textarea name="description" id="description" area-label="Task description" cols="30" rows="10" placeholder="Description..."></textarea>
             
                 <input type="date" name="dueDate" id="dueDate" area-label="Task due date" placeholder="Due Date">
 
                 <div class="modalBottom">
-                    <button class="add disabled" type="button">Add</button> 
-                    <button class="save" type="button">Save</button>
+                    <button class="add" type="button" disabled>Add</button> 
+                    <button class="save" type="button" disabled>Save</button>
                     <button class="close" type="button">Close</button>
                 </div>
             </form>

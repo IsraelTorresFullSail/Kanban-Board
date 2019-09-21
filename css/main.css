@@ -234,7 +234,7 @@ footer {
         font-size: 1em;
         color: #2f2e3a;
         line-height: 1.5em; }
-        .modal .modal-content form input .invalid, .modal .modal-content form textarea .invalid {
+        .modal .modal-content form input:invalid, .modal .modal-content form textarea:invalid {
           border: 0.0625em solid #ff4343;
           background-color: #fdd; }
       .modal .modal-content form .error {
@@ -264,9 +264,9 @@ footer {
           color: #f0f3f5;
           cursor: pointer;
           transition: transform 300ms ease; }
-          .modal .modal-content form .modalBottom button .disabled {
+          .modal .modal-content form .modalBottom button:disabled {
             cursor: not-allowed !important;
-            opacity: 0.15 !important; }
+            opacity: 0.5 !important; }
           .modal .modal-content form .modalBottom button:nth-of-type(1) {
             background-color: #7dd320;
             box-shadow: 0 8px 35px -6px #7dd320; }
