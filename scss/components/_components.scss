@@ -36,7 +36,7 @@
                 color: $strong-color;
                 line-height: 1.5em;
 
-                &:invalid {
+                &:required {
                     border: 0.0625em solid $error-color;
                     background-color: $error-bg;
                 }

@@ -6,11 +6,11 @@ title.addEventListener('input', function(event) {
     let target = event.target;
 
     if (!target.value.length){
-        title.setAttribute('invalid', '');
+        title.setAttribute('required', '');
         addbtn.setAttribute('disabled', '');
         savebtn.setAttribute('disabled', '');
     } else {
-        title.removeAttribute('invalid');
+        title.removeAttribute('required');
         addbtn.removeAttribute('disabled');
         savebtn.removeAttribute('disabled');
     }
@@ -25,12 +25,12 @@ title.addEventListener('blur', function (event) {
         if (!parent.querySelector('.error')){
             title.insertAdjacentHTML('afterend', errorMessage);
         }
-        title.setAttribute('invalid', '');
+        title.setAttribute('required', '');
         addbtn.setAttribute('disabled', '');
         savebtn.setAttribute('disabled', '');
     } else {
         parent.removeChild(parent.querySelector('.error'));
-        title.removeAttribute('invalid');
+        title.removeAttribute('required');
         addbtn.removeAttribute('disabled');
         savebtn.removeAttribute('disabled');
     }
