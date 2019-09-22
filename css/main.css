@@ -310,6 +310,7 @@ footer {
     height: 1.6em;
     border-radius: 1.5em; }
     .themes .select-wrapper .selector {
+      color: transparent;
       background-color: #1fc6b1;
       width: 40%;
       height: auto;

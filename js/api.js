@@ -10,49 +10,59 @@ const option = {
 }
 
 // ------------------------ GET data from API using fetch ------------------------ //
-fetch(urlAPI, option)
-    .then( response => {
-        if(response.ok) {
-            return response.json();
-        } else {
-            throw response;
-        }
-    })
-    .then( data => {
-        console.log(data);
-        let htmlContent = ``;
-
-        for(const list of data) {
-            htmlContent += `
-            <div class="task-list" data-id="${list.id}">
-                <div class="cardTop">
-                    <h2>${list.title}</h2>
-                    <button class="add-todo" id="${list.id}">Add task</button>
-                </div>
-            `
-            list.items.forEach(item => {
-                htmlContent += `
-                    <div class="task">
-                        <h3>${item.title}</h3>
-                        <p>${item.description}</p>
-                        <div class="date">
-                            <button class="btn-edit" id="${item.id}">Edit</button>
-                            <button class="btn-delete" id="${item.id}">Delete</button>
-                            <img src="./images/calendar.png" alt="calendar icon">
-                            <time datetime="${item.dueDate}">${item.dueDate}</time>
-                        </div>
-                    </div>
-                `
+function startLiveUpdate() {
+    setInterval(function() {
+        fetch(urlAPI, option)
+            .then( response => {
+                if(response.ok) {
+                    return response.json();
+                } else {
+                    throw response;
+                }
             })
-            htmlContent += `
-                </div>
-            `
-        }
-        document.querySelector('.mainbox').innerHTML = htmlContent;
-    })
-    .catch( err => {
-        console.log(err);
-    })
+            .then( data => {
+                console.log(data);
+                let htmlContent = ``;
+
+                for(const list of data) {
+                    htmlContent += `
+                    <div class="task-list" data-id="${list.id}">
+                        <div class="cardTop">
+                            <h2>${list.title}</h2>
+                            <button class="add-todo" id="${list.id}">Add task</button>
+                        </div>
+                    `
+                    list.items.forEach(item => {
+                        htmlContent += `
+                            <div class="task">
+                                <h3>${item.title}</h3>
+                                <p>${item.description}</p>
+                                <div class="date">
+                                    <button class="btn-edit" id="${item.id}">Edit</button>
+                                    <button class="btn-delete" id="${item.id}">Delete</button>
+                                    <img src="./images/calendar.png" alt="calendar icon">
+                                    <time datetime="${item.dueDate}">${item.dueDate}</time>
+                                </div>
+                            </div>
+                        `
+                    })
+                    htmlContent += `
+                        </div>
+                    `
+                }
+                document.querySelector('.mainbox').innerHTML = htmlContent;
+            })
+            .catch( err => {
+                console.log(err);
+            })
+    }, 2000);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    startLiveUpdate();
+});
+
+
 
 // ------------------------ Modal Form ------------------------ //
 // Get the modal
