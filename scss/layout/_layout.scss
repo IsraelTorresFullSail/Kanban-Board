@@ -50,11 +50,10 @@ main {
         button {
             display: block;
             padding: .5em 1em;
-            font-size: $font-size2;
+            font-size: $font-size1;
             color: $main-bg-color;
             border: none;
             margin: 0.625em 0;
-            //transition: border-radius .5s, margin-top .5s;
             border-radius: 1.5em;
             cursor: pointer;
             transition: transform 300ms ease;
@@ -70,20 +69,12 @@ main {
 @include list(2);
 @include list(3);
 
-.taskT {
+.task {
     background-color: $card-color;
     margin: 1.25em auto;
     padding: $standard $standard 0 $standard;
     box-shadow: $shadow;
     border-radius: .5em;
-}
-
-.taskI {
-    @extend .taskT;
-}
-
-.taskN {
-    @extend .taskT;
 }
 
 .date {
@@ -96,11 +87,11 @@ main {
     border-image-slice: 1;
 
     img {
-        margin: 1.425em 1em;
+        margin: 1.55em 1em;
     }
 
     button {
-        font-size: $font-size2;
+        font-size: $font-size1;
         color: $main-bg-color;
         border: none;
         margin: 1em 0.5em;

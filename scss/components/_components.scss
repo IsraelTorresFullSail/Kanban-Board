@@ -1,3 +1,4 @@
+// -------------- Modal ------------------ //
 .modal {
     display: none; 
     position: fixed; 
@@ -34,6 +35,26 @@
                 font-size: $font-size1;
                 color: $strong-color;
                 line-height: 1.5em;
+
+                &:required {
+                    border: 0.0625em solid $error-color;
+                    background-color: $error-bg;
+                }
+            }
+
+            .error {
+                width: 99%;
+                margin: -1.5em auto 1em auto;
+                padding: .6em;
+                font-size: 80%;
+                color: $main-bg-color;
+                background-color: $error-color;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+
+                .active {
+                    padding: 0.3em;
+                }
             }
 
             textarea {
@@ -55,10 +76,15 @@
                     padding: 1em;
                     border-radius: 1.5em;
                     border: none;
-                    font-size: $font-size2;
+                    font-size: $font-size1;
                     color: $main-bg-color;
                     cursor: pointer;
                     transition: transform 300ms ease;
+
+                    &:disabled {
+                        cursor: not-allowed !important;
+                        opacity: 0.5 !important;
+                    }
     
                     &:nth-of-type(1) {
                         background-color: $add-color;
@@ -99,6 +125,67 @@
         }
     }
   }
-  
-  
+
+// -------------- Theme Selector ------------------ //  
+.themes {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    padding: 0.5em 0;
+
+    .select-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-content: center;
+        background-color: #060b17;
+        box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.7);
+        margin: auto 0 auto 1em;
+        padding: .2em;
+        width: 4em;
+        height: 1.6em;
+        border-radius: 1.5em;
+
+        .selector {
+            color: transparent;
+            background-color: $primary-color;
+            width: 40%;
+            height: auto;
+            border-radius: 2em;
+            border: none;
+            cursor: pointer;
+            outline:none;
+        }
+    }
+
+    .select-wrapper-dark {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-content: center;
+        background-color: $primary-color;
+        margin: auto 0 auto 1em;
+        padding: .2em;
+        width: 4em;
+        height: 1.6em;
+        border-radius: 1.5em;
+
+        .selector-dark {
+            background-color: #060b17;
+            width: 40%;
+            height: auto;
+            border-radius: 2em;
+            border: none;
+            cursor: pointer;
+            outline:none;
+        }
+    }
+
+    h2 {
+        color: $main-bg-color;
+        text-transform: capitalize;
+        //padding: 0 !important;
+    }
+}
   

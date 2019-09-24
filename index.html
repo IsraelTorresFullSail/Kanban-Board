@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <meta name="description" content="This is a kanban board application created for school assignment">
+    <meta name="keywords" content="HTML5, CSS, SASS, JavaScript, NodeJs, API">
+    <meta name="author" content="Israel Torres">
+    
     <title>Kanban Board</title>
 
     <link rel="stylesheet" href="https://use.typekit.net/rrq6egv.css">
@@ -12,62 +16,55 @@
 </head>
 <body>
     <header>
-        <nav>
+        <nav role="navigation">
             <div class="container">
                 <ul>
                     <li><h1>Kanban Board</h1></li>
-                    <li class="logo"><img src="./images/logo.png" alt="logo"></li>
+                    <li class="logo"><img src="./images/logo.png" alt="logo image"></li>
+                    <li>
+                        <div class="themes">
+                            <h2>Style: </h2>
+                            <div id='wrapper' class="select-wrapper">
+                                <button id='btn-selector' class="selector" type="button" area-label="Button selector">Selector</button>
+                            </div>
+                        </div>
+                    </li>
+                    
                 </ul>
             </div>
         </nav>
     </header>
-    <main class="container mainbox">
-        <div id="todoList" class="task-list">
-            <div class="cardTop">
-                <h2>To Do</h2>
-                <button class="add-todo">Add task</button>
-            </div>
-        </div>
-        <div id="inProgressList" class="task-list">
-            <div class="cardTop">
-                <h2>In Progress</h2>
-                <button class="add-inprog">Add task</button>
-            </div>
-        </div>
-        <div id="needReviewList" class="task-list">
-            <div class="cardTop">
-                <h2>Need Review</h2>
-                <button class="add-needrev">Add task</button>
-            </div>
-        </div>
-
-        <!-- The Modal -->
-        <div id="formModal" class="modal">
-            <!-- Modal content -->
-            <div class="modal-content">
-                <form id="postData">
-                    <input type="number" name="listId" id="listId">
-
-                    <input type="text" name="title" id="title" placeholder="Title *" class="required">
-                
-                    <textarea name="description" id="description" cols="30" rows="10" placeholder="Description..."></textarea>
-                
-                    <input type="date" name="dueDate" id="dueDate" placeholder="Due Date *" class="required">
-                    <div class="modalBottom">
-                        <button class="add" type="button">Add</button> 
-                        <button class="save" type="button">Save</button>
-                        <button class="close" type="button">Close</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
+    <main class="container mainbox" role="main">
+        <!-- Main Content -->
     </main>
-    <footer>
+    <!-- The Modal -->
+    <div id="formModal" class="modal" role="complementary" hidden>
+        <!-- Modal content -->
+        <div class="modal-content">
+            <form id="postData" role="form">
+                <input type="number" name="listId" id="listId" tabindex="-1" required>
+                
+                <input type="text" name="title" id="title" area-label="Task title" placeholder="Title *">
+            
+                <textarea name="description" id="description" area-label="Task description" cols="30" rows="10" placeholder="Description..."></textarea>
+            
+                <input type="date" name="dueDate" id="dueDate" area-label="Task due date" placeholder="Due Date">
+
+                <div class="modalBottom">
+                    <button class="add" type="button" disabled>Add</button> 
+                    <button class="save" type="button" disabled>Save</button>
+                    <button class="close" type="button">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer role="contentinfo">
         <h3 class="container">Israel Torres © 2019 Copyright</h3>
     </footer>
 
-    <script src="./js/modal.js"></script>
+    <script src="./js/selector.js"></script>
+    <script src="./js/validation.js"></script>
     <script src="./js/api.js"></script>
+    
 </body>
 </html>
