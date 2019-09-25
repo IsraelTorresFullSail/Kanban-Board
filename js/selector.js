@@ -1,55 +1,55 @@
 // Get button selector
-let selector = document.querySelector('.selector');
+let selector = document.querySelector('#btn-selector');
+if(selector) {
+    initTheme(); // on page load, if user has already selected a specific theme -> apply it
 
-// Add event listener to button selector
-selector.addEventListener('click', function(){
-    let themes = document.querySelector('.themes');
-    if(!themes.querySelector('.select-wrapper-dark') && !themes.querySelector('.selector-dark')){
-        //themes.querySelector('#wrapper').classList.add('select-wrapper-dark');
-        //themes.querySelector('#btn-selector').classList.add('selector-dark');
+    selector.addEventListener('click', function(event) {
+        resetThemme(); // update color theme
+    });
 
-        let wrapper = themes.querySelector('#wrapper');
-        localStorage.setItem('wrapper', wrapper.classList.add('select-wrapper-dark'));
+    function initTheme() {
+        let bodyDarkSelected = (localStorage.getItem('body') !== null && localStorage.getItem('body') === 'dark');
+        let wrapperDarkSelected = (localStorage.getItem('wrapper') !== null && localStorage.getItem('wrapper') === 'select-wrapper-dark');
+        let btnDarkSelected = (localStorage.getItem('btn-selector') !== null && localStorage.getItem('btn-selector') === 'selector-dark');
+        let navDarkSelected = (localStorage.getItem('nav') !== null && localStorage.getItem('nav') === 'nav-dark');
+        let footerDarkSelected = (localStorage.getItem('footer') !== null && localStorage.getItem('footer') === 'footer-dark');
 
-        let selector = themes.querySelector('#btn-selector');
-        localStorage.setItem('btn-selector', selector.classList.add('selector-dark'));
+        // update body, nav and footer class attributes
+        bodyDarkSelected ? document.body.setAttribute('class', 'dark') : document.body.removeAttribute('class');
+        wrapperDarkSelected ? document.querySelector('#wrapper').setAttribute('class', 'select-wrapper-dark') : document.querySelector('#wrapper').removeAttribute('class');
+        btnDarkSelected ? document.querySelector('#btn-selector').setAttribute('class', 'selector-dark') : document.querySelector('#btn-selector').removeAttribute('class');
+        navDarkSelected ? document.querySelector('nav').setAttribute('class', 'nav-dark') : document.querySelector('nav').removeAttribute('class');
+        footerDarkSelected ? document.querySelector('footer').setAttribute('class', 'footer-dark') : document.querySelector('footer').removeAttribute('class');
+    };
 
-        let nav = document.querySelector('nav');
-        localStorage.setItem('nav', nav.style.backgroundImage = 'linear-gradient(to right, #060b17, #060b17)');
+    function resetThemme() {
+        let themes = document.querySelector('.themes');
+        if(!themes.querySelector('.select-wrapper-dark') && !themes.querySelector('.selector-dark')) { // dark theme has been selected
+            document.querySelector('#wrapper').setAttribute('class', 'select-wrapper-dark');
+            document.querySelector('#btn-selector').setAttribute('class', 'selector-dark');
+            document.body.setAttribute('class', 'dark');
+            document.querySelector('nav').setAttribute('class', 'nav-dark');
+            document.querySelector('footer').setAttribute('class', 'footer-dark');
 
-        let body = document.querySelector('body');
-        localStorage.setItem('body', body.style.backgroundColor = '#e3faf7');
+            // save theme selection
+            localStorage.setItem('body', 'dark'); 
+            localStorage.setItem('wrapper', 'select-wrapper-dark');
+            localStorage.setItem('btn-selector', 'selector-dark');
+            localStorage.setItem('nav', 'nav-dark');
+            localStorage.setItem('footer', 'footer-dark');
+        } else {
+            themes.querySelector('#wrapper').removeAttribute('class');
+            themes.querySelector('#btn-selector').removeAttribute('class');
+            document.body.removeAttribute('class');
+            document.querySelector('nav').removeAttribute('class');
+            document.querySelector('footer').removeAttribute('class');
 
-        let footer = document.querySelector('footer');
-        localStorage.setItem('footer', footer.style.backgroundImage = 'linear-gradient(to right, #060b17, #060b17)');
-
-        let h3Footer = document.querySelector('footer h3');
-        localStorage.setItem('h3Footer', h3Footer.style.color = '#f0f3f5');
-
-    }
-    else {
-        themes.querySelector('#wrapper').removeAttribute('class');
-        themes.querySelector('#btn-selector').removeAttribute('class');
-        //themes.querySelector('#wrapper').classList.add('select-wrapper');
-        //themes.querySelector('#btn-selector').classList.add('selector');
-
-        let wrapperD = themes.querySelector('#wrapper');
-        localStorage.setItem('wrapper', wrapperD.classList.add('select-wrapper'));
-
-        let selectorD = themes.querySelector('#btn-selector');
-        localStorage.setItem('btn-selector', selectorD.classList.add('selector'));
-
-        let navD = document.querySelector('nav');
-        localStorage.setItem('nav', navD.style.backgroundImage = 'linear-gradient(to right, #08a998, #3DB1C9, #1fc6b1)');
-
-        let bodyD = document.querySelector('body');
-        localStorage.setItem('body', bodyD.style.backgroundColor = '#f0f3f5');
-
-        let footerD = document.querySelector('footer');
-        localStorage.setItem('footer', footerD.style.backgroundImage = 'linear-gradient(to right, #08a998, #3DB1C9, #1fc6b1)');
-
-        let h3FooterD = document.querySelector('footer h3');
-        localStorage.setItem('h3Footer', h3FooterD.style.color = '#2f2e3a');
-    }
-})
-
+            // reset theme selection
+            localStorage.removeItem('body'); 
+            localStorage.removeItem('wrapper');
+            localStorage.removeItem('btn-selector');
+            localStorage.removeItem('nav');
+            localStorage.removeItem('footer');
+        }
+    };
+}

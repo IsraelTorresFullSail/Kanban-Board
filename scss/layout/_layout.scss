@@ -7,6 +7,9 @@ nav {
     top: 0;
     width: 100%;
 }
+.nav-dark {
+    background-image: linear-gradient(to right, #060b17, #060b17);
+}
 
 ul {
     list-style-type: none;
@@ -134,5 +137,12 @@ footer {
         color: $strong-color;
         border-left: 0 !important;
         padding-left: 0 !important;
+    }
+}
+.footer-dark {
+    background-image: linear-gradient(to right, #060b17, #060b17);
+
+    h3 {
+        color: #f0f3f5;
     }
 }

@@ -323,7 +323,7 @@ document.querySelector('.mainbox').addEventListener('click', function(e) {
         fetch(urlAPIDelete, configDelete)
             .then( response => {
                 if(response.ok) {
-                    return response.json();
+                    return response.text();
                 } else {
                     throw response;
                 }

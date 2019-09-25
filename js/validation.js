@@ -31,6 +31,8 @@ title.addEventListener('blur', function (event) {
         addbtn.setAttribute('disabled', '');
         savebtn.setAttribute('disabled', '');
     } else {
+        // let error1 = document.querySelector('#error1');
+        // error1.parentNode.removeChild(error1);
         parent.removeChild(parent.querySelector('.error'));
         title.removeAttribute('required');
         addbtn.removeAttribute('disabled');
