@@ -278,7 +278,10 @@ footer {
         .modal .modal-content form input:required, .modal .modal-content form textarea:required {
           border: 0.0625em solid #ff4343;
           background-color: #fdd; }
+      .modal .modal-content form span {
+        display: none; }
       .modal .modal-content form .error {
+        display: block;
         width: 99%;
         margin: -1.5em auto 1em auto;
         padding: .6em;
@@ -286,7 +289,10 @@ footer {
         color: #f0f3f5;
         background-color: #ff4343;
         -moz-box-sizing: border-box;
-        box-sizing: border-box; }
+        box-sizing: border-box;
+        animation-name: error-slide;
+        animation-duration: .5s;
+        animation-timing-function: ease-in-out; }
         .modal .modal-content form .error .active {
           padding: 0.3em; }
       .modal .modal-content form #listId {
@@ -386,6 +392,14 @@ footer {
   from {
     opacity: 0;
     transform: translateY(150px); }
+  to {
+    opacity: 1;
+    transform: translateY(0); } }
+
+@keyframes error-slide {
+  from {
+    opacity: 0;
+    transform: translateY(-20px); }
   to {
     opacity: 1;
     transform: translateY(0); } }

@@ -20,20 +20,17 @@ title.addEventListener('input', function(event) {
 
 title.addEventListener('blur', function (event) {
     let target = event.target;
-    let parent = target.parentElement;
-    let errorMessage = '<span class="error" aria-live="polite">Fill out the required fields!</span>';
+    let form = document.querySelector('#postData');
 
     if (!target.value.length){
-        if (!parent.querySelector('.error')){
-            title.insertAdjacentHTML('afterend', errorMessage);
+        if (!form.querySelector('.error')){
+            form.querySelector('span:nth-of-type(1)').setAttribute('class', 'error');
         }
         title.setAttribute('required', '');
         addbtn.setAttribute('disabled', '');
         savebtn.setAttribute('disabled', '');
     } else {
-        // let error1 = document.querySelector('#error1');
-        // error1.parentNode.removeChild(error1);
-        parent.removeChild(parent.querySelector('.error'));
+        form.querySelector('span:nth-of-type(1)').removeAttribute('class');
         title.removeAttribute('required');
         addbtn.removeAttribute('disabled');
         savebtn.removeAttribute('disabled');
@@ -56,18 +53,17 @@ desc.addEventListener('input', function(event) {
 
 desc.addEventListener('blur', function (event) {
     let target = event.target;
-    let parent = target.parentElement;
-    let errorMessage = '<span class="error" aria-live="polite">Fill out the required fields!</span>';
+    let form = document.querySelector('#postData');
 
     if (!target.value.length){
-        if (!parent.querySelector('.error')){
-            desc.insertAdjacentHTML('afterend', errorMessage);
+        if (!form.querySelector('.error')){
+            form.querySelector('span:nth-of-type(2)').setAttribute('class', 'error');
         }
         desc.setAttribute('required', '');
         addbtn.setAttribute('disabled', '');
         savebtn.setAttribute('disabled', '');
     } else {
-        parent.removeChild(parent.querySelector('.error'));
+        form.querySelector('span:nth-of-type(2)').removeAttribute('class');
         desc.removeAttribute('required');
         addbtn.removeAttribute('disabled');
         savebtn.removeAttribute('disabled');
@@ -90,18 +86,17 @@ dueDate.addEventListener('input', function(event) {
 
 dueDate.addEventListener('blur', function (event) {
     let target = event.target;
-    let parent = target.parentElement;
-    let errorMessage = '<span class="error" aria-live="polite">Fill out the required fields!</span>';
+    let form = document.querySelector('#postData');
 
     if (!target.value.length){
-        if (!parent.querySelector('.error')){
-            dueDate.insertAdjacentHTML('afterend', errorMessage);
+        if (!form.querySelector('.error')){
+            form.querySelector('span:nth-of-type(3)').setAttribute('class', 'error');
         }
         dueDate.setAttribute('required', '');
         addbtn.setAttribute('disabled', '');
         savebtn.setAttribute('disabled', '');
     } else {
-        parent.removeChild(parent.querySelector('.error'));
+        form.querySelector('span:nth-of-type(3)').removeAttribute('class');
         dueDate.removeAttribute('required');
         addbtn.removeAttribute('disabled');
         savebtn.removeAttribute('disabled');
