@@ -103,9 +103,20 @@ main {
       margin: 0.625em 0;
       border-radius: 1.5em;
       cursor: pointer;
-      transition: transform 300ms ease; }
+      transition: transform .3s ease; }
       .task-list .cardTop button:hover {
-        transform: scale(1.04); }
+        transform: scale(1.1); }
+      .task-list .cardTop button:after {
+        content: '';
+        display: block;
+        margin: auto;
+        height: 0.125em;
+        width: 0px;
+        background: transparent;
+        transition: width .5s ease, background-color .5s ease; }
+      .task-list .cardTop button:hover:after {
+        width: 100%;
+        background: #f0f3f5; }
 
 .task-list:nth-of-type(1) .cardTop {
   border-bottom: 0.0625em solid #1fc6b1;
@@ -161,7 +172,11 @@ main {
   margin: 1.25em auto;
   padding: 0.9375em 0.9375em 0 0.9375em;
   box-shadow: 0 2px 5px 0 rgba(47, 46, 58, 0.16), 0 2px 10px 0 rgba(47, 46, 58, 0.12);
-  border-radius: .5em; }
+  border-radius: .5em;
+  transition: all .3s ease; }
+  .task:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    transform: scale(1.05); }
 
 .date {
   display: flex;
@@ -183,14 +198,26 @@ main {
     transition: transform 300ms ease; }
     .date button:nth-of-type(1) {
       padding: .5em 1.7em;
-      background-color: #ffab0f;
-      box-shadow: 0 8px 8px -6px #ffab0f; }
+      background: linear-gradient(to left, #ffab0f 50%, #1fc6b1 50%);
+      background-size: 220% 100%;
+      background-position: right bottom;
+      box-shadow: 0 8px 8px -6px #ffab0f;
+      transition: all .5s ease; }
     .date button:nth-of-type(2) {
       padding: .5em 1em;
-      background-color: #da6cf1;
-      box-shadow: 0 8px 8px -6px #da6cf1; }
-    .date button:hover {
-      transform: scale(1.04); }
+      background: linear-gradient(to left, #da6cf1 50%, #ff4343 50%);
+      background-size: 220% 100%;
+      background-position: right bottom;
+      box-shadow: 0 8px 8px -6px #da6cf1;
+      transition: all .5s ease; }
+    .date button:nth-of-type(1):hover {
+      background-position: left bottom;
+      box-shadow: 0 8px 8px -6px #1fc6b1;
+      transform: scale(1.1); }
+    .date button:nth-of-type(2):hover {
+      background-position: left bottom;
+      box-shadow: 0 8px 8px -6px #ff4343;
+      transform: scale(1.1); }
 
 /* FOOTER ========================================== */
 footer {
@@ -229,7 +256,10 @@ footer {
     width: 90%;
     background-color: rgba(255, 255, 255, 0.5);
     box-shadow: 0 2px 5px 0 rgba(47, 46, 58, 0.16), 0 2px 10px 0 rgba(47, 46, 58, 0.12);
-    border-radius: .5em; }
+    border-radius: .5em;
+    animation-name: modal-slide;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out; }
     .modal .modal-content form {
       padding: 2em;
       display: flex;
@@ -322,13 +352,14 @@ footer {
     border-radius: 1.5em; }
     .themes #wrapper #btn-selector {
       color: transparent;
-      background-color: #1fc6b1;
+      background-color: #060b17;
       width: 40%;
       height: auto;
       border-radius: 2em;
-      border: none;
+      border: 12px solid #1fc6b1;
       cursor: pointer;
-      outline: none; }
+      outline: none;
+      transition: background-color 0.5s linear; }
   .themes h2 {
     color: #f0f3f5;
     text-transform: capitalize; }
@@ -339,6 +370,7 @@ footer {
   justify-content: flex-end !important;
   align-content: center;
   background-color: #1fc6b1 !important;
+  box-shadow: 0 8px 6px -6px inset rgba(0, 0, 0, 0.7) !important;
   margin: auto 0 auto 1em;
   padding: .2em;
   width: 4em;
@@ -346,4 +378,14 @@ footer {
   border-radius: 1.5em; }
 
 .selector-dark {
-  background-color: #060b17 !important; }
+  background-color: #1fc6b1 !important;
+  border: 12px solid #060b17 !important;
+  transition: background-color 0.5s linear; }
+
+@keyframes modal-slide {
+  from {
+    opacity: 0;
+    transform: translateY(150px); }
+  to {
+    opacity: 1;
+    transform: translateY(0); } }

@@ -19,6 +19,10 @@
         box-shadow: $shadow;
         border-radius: .5em;
 
+        animation-name: modal-slide;
+        animation-duration: 2s;
+        animation-timing-function: ease-in-out;
+
         form {
             padding: 2em;
             display: flex;
@@ -149,13 +153,14 @@
 
         #btn-selector {
             color: transparent;
-            background-color: $primary-color;
+            background-color: #060b17;
             width: 40%;
             height: auto;
             border-radius: 2em;
-            border: none;
+            border: 12px solid $primary-color;
             cursor: pointer;
             outline:none;
+            transition: background-color 0.5s linear;
         }
         
     }
@@ -172,6 +177,7 @@
     justify-content: flex-end !important;
     align-content: center;
     background-color: $primary-color !important;
+    box-shadow: 0 8px 6px -6px inset rgba(0, 0, 0, 0.7) !important;
     margin: auto 0 auto 1em;
     padding: .2em;
     width: 4em;
@@ -179,5 +185,19 @@
     border-radius: 1.5em;
 }
 .selector-dark {
-    background-color: #060b17 !important;
+    background-color: $primary-color !important;
+    border: 12px solid #060b17 !important;
+    transition: background-color 0.5s linear;
+}
+
+// ------------------- Animations ---------------------- //
+@keyframes modal-slide {
+    from {
+        opacity: 0;
+        transform: translateY(150px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
