@@ -104,6 +104,9 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    border-bottom-width: 0; // for Safari
+    border-right-width: 0; // for Safari
+    border-left-width: 0; // for Safari
     border-top-width: 0.0625em;
     border-top-style: solid;
     border-image-source: $gradient-color;

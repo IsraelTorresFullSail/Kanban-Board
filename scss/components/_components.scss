@@ -175,19 +175,26 @@
         margin: auto 0 auto 1em;
         padding: .2em;
         width: 4em;
-        height: 1.6em;
+        height: 4vh; // for Safari
+        min-height: 1.6em; // for Safari
+        max-height: 2em; // for Safari
         border-radius: 1.5em;
 
         #btn-selector {
             color: transparent;
             background-color: #060b17;
-            width: 40%;
+            width: 20%;
             height: auto;
             border-radius: 2em;
             border: 12px solid $primary-color;
             cursor: pointer;
             outline:none;
             transition: background-color 0.5s linear;
+            transition: margin-left 0.3s ease;
+
+            &:hover {
+                margin-left: .3em;
+            }
         }
         
     }
@@ -203,18 +210,25 @@
     flex-direction: row;
     justify-content: flex-end !important;
     align-content: center;
-    background-color: $primary-color !important;
+    background-color: rgba(31, 198, 177, 0.7) !important;
     box-shadow: 0 8px 6px -6px inset rgba(0, 0, 0, 0.7) !important;
     margin: auto 0 auto 1em;
     padding: .2em;
     width: 4em;
-    height: 1.6em;
+    height: 4vh;
+    min-height: 1.6em;
+    max-height: 2em;
     border-radius: 1.5em;
 }
 .selector-dark {
     background-color: $primary-color !important;
     border: 12px solid #060b17 !important;
     transition: background-color 0.5s linear;
+    transition: margin-right 0.3s ease;
+
+    &:hover {
+        margin-right: .3em;
+    }
 }
 
 // ------------------- Animations ---------------------- //
