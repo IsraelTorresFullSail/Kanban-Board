@@ -60,6 +60,8 @@ fetch(urlAPI, option)
 // Get the modal
 let modal = document.querySelector('#formModal');
 
+let form = document.querySelector('#postData');
+
 // Get button add
 let add = document.querySelector('.add');
 
@@ -73,6 +75,8 @@ let close = document.querySelector('.close');
 document.querySelector('.mainbox').addEventListener('click', function(e) {
     if(e.target.classList.contains('add-todo')) {
 
+        form.reset();
+        
         modal.style.display = 'block';
         
         if(e.target.id == 1) {

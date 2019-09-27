@@ -23,8 +23,8 @@ title.addEventListener('blur', function (event) {
     let form = document.querySelector('#postData');
 
     if (!target.value.length){
-        if (!form.querySelector('.error')){
-            form.querySelector('span:nth-of-type(1)').setAttribute('class', 'error');
+        if (!form.querySelector('.error1')){
+            form.querySelector('span:nth-of-type(1)').setAttribute('class', 'error1');
         }
         title.setAttribute('required', '');
         addbtn.setAttribute('disabled', '');
@@ -56,8 +56,8 @@ desc.addEventListener('blur', function (event) {
     let form = document.querySelector('#postData');
 
     if (!target.value.length){
-        if (!form.querySelector('.error')){
-            form.querySelector('span:nth-of-type(2)').setAttribute('class', 'error');
+        if (!form.querySelector('.error2')){
+            form.querySelector('span:nth-of-type(2)').setAttribute('class', 'error2');
         }
         desc.setAttribute('required', '');
         addbtn.setAttribute('disabled', '');
@@ -89,8 +89,8 @@ dueDate.addEventListener('blur', function (event) {
     let form = document.querySelector('#postData');
 
     if (!target.value.length){
-        if (!form.querySelector('.error')){
-            form.querySelector('span:nth-of-type(3)').setAttribute('class', 'error');
+        if (!form.querySelector('.error3')){
+            form.querySelector('span:nth-of-type(3)').setAttribute('class', 'error3');
         }
         dueDate.setAttribute('required', '');
         addbtn.setAttribute('disabled', '');

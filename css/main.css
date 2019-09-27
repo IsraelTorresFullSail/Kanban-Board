@@ -265,6 +265,8 @@ footer {
       display: flex;
       flex-direction: column;
       justify-content: space-between; }
+      .modal .modal-content form #listId {
+        display: none; }
       .modal .modal-content form input, .modal .modal-content form textarea {
         margin: 0 0 1em;
         padding: .6em;
@@ -280,23 +282,33 @@ footer {
           background-color: #fdd; }
       .modal .modal-content form span {
         display: none; }
-      .modal .modal-content form .error {
+      .modal .modal-content form .error1, .modal .modal-content form .error2, .modal .modal-content form .error3 {
+        position: relative;
         display: block;
-        width: 99%;
-        margin: -1.5em auto 1em auto;
+        width: 15.625em;
+        margin: -2.5em auto 1em auto;
         padding: .6em;
         font-size: 80%;
         color: #f0f3f5;
+        text-align: center;
         background-color: #ff4343;
+        border-radius: .5em;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
         animation-name: error-slide;
         animation-duration: .5s;
         animation-timing-function: ease-in-out; }
-        .modal .modal-content form .error .active {
-          padding: 0.3em; }
-      .modal .modal-content form #listId {
-        display: none; }
+        .modal .modal-content form .error1:before, .modal .modal-content form .error2:before, .modal .modal-content form .error3:before {
+          content: '';
+          position: absolute;
+          top: -4px;
+          left: 20px;
+          border: 4px solid #ff4343;
+          -webkit-transform: rotate(-45deg);
+          -moz-transform: rotate(-45deg);
+          -o-transform: rotate(-45deg);
+          -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg); }
       .modal .modal-content form .modalBottom {
         display: flex;
         flex-direction: row;

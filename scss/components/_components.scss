@@ -29,6 +29,10 @@
             flex-direction: column;
             justify-content: space-between;
 
+            #listId {
+                display: none;
+            }
+
             input {
                 margin: 0 0 1em;
                 padding: .6em;
@@ -46,18 +50,25 @@
                 }
             }
 
+            textarea {
+                @extend input;
+            }
+
             span {
                 display: none;
             }
 
-            .error {
+            .error1 {
+                position: relative;
                 display: block;
-                width: 99%;
-                margin: -1.5em auto 1em auto;
+                width: 15.625em;
+                margin: -2.5em auto 1em auto;
                 padding: .6em;
                 font-size: 80%;
                 color: $main-bg-color;
+                text-align: center;
                 background-color: $error-color;
+                border-radius: .5em;
                 -moz-box-sizing: border-box;
                 box-sizing: border-box;
 
@@ -65,17 +76,24 @@
                 animation-duration: .5s;
                 animation-timing-function: ease-in-out;
 
-                .active {
-                    padding: 0.3em;
+                &:before {
+                    content: '';
+                    position: absolute;
+                    top: -4px;
+                    left: 20px;
+                    border: 4px solid $error-color;
+                    -webkit-transform: rotate(-45deg);
+                    -moz-transform: rotate(-45deg);
+                    -o-transform: rotate(-45deg);
+                    -ms-transform: rotate(-45deg);
+                    transform: rotate(-45deg);
                 }
             }
-
-            textarea {
-                @extend input;
+            .error2 {
+                @extend .error1;
             }
-
-            #listId {
-                display: none;
+            .error3 {
+                @extend .error1;
             }
 
             .modalBottom {
