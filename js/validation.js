@@ -46,8 +46,8 @@ desc.addEventListener('input', function(event) {
         savebtn.setAttribute('disabled', '');
     } else {
         desc.removeAttribute('required');
-        addbtn.removeAttribute('disabled');
-        savebtn.removeAttribute('disabled');
+        //addbtn.removeAttribute('disabled');
+        //savebtn.removeAttribute('disabled');
     }
 }, false);
 
@@ -102,3 +102,5 @@ dueDate.addEventListener('blur', function (event) {
         savebtn.removeAttribute('disabled');
     }
 }, false);
+        
+    
