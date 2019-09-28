@@ -24,8 +24,8 @@
                     <li>
                         <div class="themes">
                             <h2>Style: </h2>
-                            <div id='wrapper' class="select-wrapper">
-                                <button id='btn-selector' class="selector" type="button" area-label="Button selector">Selector</button>
+                            <div id='wrapper'>
+                                <button id='btn-selector' type="button" area-label="Button selector">s</button>
                             </div>
                         </div>
                     </li>
@@ -45,10 +45,13 @@
                 <input type="number" name="listId" id="listId" tabindex="-1" required>
                 
                 <input type="text" name="title" id="title" area-label="Task title" placeholder="Title *">
+                <span aria-live="polite">Enter the title here!</span>
             
-                <textarea name="description" id="description" area-label="Task description" cols="30" rows="10" placeholder="Description..."></textarea>
+                <textarea name="description" id="description" area-label="Task description" cols="30" rows="10" placeholder="Description... *"></textarea>
+                <span aria-live="polite">Enter the description here!</span>
             
-                <input type="date" name="dueDate" id="dueDate" area-label="Task due date" placeholder="Due Date">
+                <input type="date" name="dueDate" id="dueDate" area-label="Task due date" placeholder="Due Date *">
+                <span aria-live="polite">Enter the due date here!</span>
 
                 <div class="modalBottom">
                     <button class="add" type="button" disabled>Add</button> 

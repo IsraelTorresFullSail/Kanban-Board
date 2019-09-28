@@ -10,63 +10,57 @@ const option = {
 }
 
 // ------------------------ GET data from API using fetch ------------------------ //
-function startLiveUpdate() {
-    setInterval(function() {
-        fetch(urlAPI, option)
-            .then( response => {
-                if(response.ok) {
-                    return response.json();
-                } else {
-                    throw response;
-                }
-            })
-            .then( data => {
-                console.log(data);
-                let htmlContent = ``;
 
-                for(const list of data) {
-                    htmlContent += `
-                    <div class="task-list" data-id="${list.id}">
-                        <div class="cardTop">
-                            <h2>${list.title}</h2>
-                            <button class="add-todo" id="${list.id}">Add task</button>
+fetch(urlAPI, option)
+    .then( response => {
+        if(response.ok) {
+            return response.json();
+        } else {
+            throw response;
+        }
+    })
+    .then( data => {
+        console.log(data);
+        let htmlContent = ``;
+
+        for(const list of data) {
+            htmlContent += `
+            <div class="task-list" data-id="${list.id}">
+                <div class="cardTop">
+                    <h2>${list.title}</h2>
+                    <button class="add-todo" id="${list.id}">Add task</button>
+                </div>
+            `
+            list.items.forEach(item => {
+                htmlContent += `
+                    <div class="task">
+                        <h3>${item.title}</h3>
+                        <p>${item.description}</p>
+                        <div class="date">
+                            <button class="btn-edit" id="${item.id}" data-title="${item.title}" data-desc="${item.description}" data-datetime="${item.dueDate}">Edit</button>
+                            <button class="btn-delete" id="${item.id}">Delete</button>
+                            <img src="./images/calendar.png" alt="calendar icon">
+                            <time datetime="${item.dueDate}">${item.dueDate}</time>
                         </div>
-                    `
-                    list.items.forEach(item => {
-                        htmlContent += `
-                            <div class="task">
-                                <h3>${item.title}</h3>
-                                <p>${item.description}</p>
-                                <div class="date">
-                                    <button class="btn-edit" id="${item.id}">Edit</button>
-                                    <button class="btn-delete" id="${item.id}">Delete</button>
-                                    <img src="./images/calendar.png" alt="calendar icon">
-                                    <time datetime="${item.dueDate}">${item.dueDate}</time>
-                                </div>
-                            </div>
-                        `
-                    })
-                    htmlContent += `
-                        </div>
-                    `
-                }
-                document.querySelector('.mainbox').innerHTML = htmlContent;
+                    </div>
+                `
             })
-            .catch( err => {
-                console.log(err);
-            })
-    }, 2000);
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    startLiveUpdate();
-});
-
+            htmlContent += `
+                </div>
+            `
+        }
+        document.querySelector('.mainbox').innerHTML = htmlContent;
+    })
+    .catch( err => {
+        console.log(err);
+    })
 
 
 // ------------------------ Modal Form ------------------------ //
 // Get the modal
 let modal = document.querySelector('#formModal');
+
+let form = document.querySelector('#postData');
 
 // Get button add
 let add = document.querySelector('.add');
@@ -81,6 +75,8 @@ let close = document.querySelector('.close');
 document.querySelector('.mainbox').addEventListener('click', function(e) {
     if(e.target.classList.contains('add-todo')) {
 
+        form.reset();
+        
         modal.style.display = 'block';
         
         if(e.target.id == 1) {
@@ -144,8 +140,53 @@ function postData(event) {
                 throw response;
             }
         })
-        .then( responseAsJson => {
-            console.log(responseAsJson);
+        .then( data => {
+            console.log(data);
+            //------ Re-write content -------//
+            fetch(urlAPI, option)
+                .then( response => {
+                    if(response.ok) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                })
+                .then( data => {
+                    console.log(data);
+                    let htmlContent = ``;
+
+                    for(const list of data) {
+                        htmlContent += `
+                        <div class="task-list" data-id="${list.id}">
+                            <div class="cardTop">
+                                <h2>${list.title}</h2>
+                                <button class="add-todo" id="${list.id}">Add task</button>
+                            </div>
+                        `
+                        list.items.forEach(item => {
+                            htmlContent += `
+                                <div class="task">
+                                    <h3>${item.title}</h3>
+                                    <p>${item.description}</p>
+                                    <div class="date">
+                                        <button class="btn-edit" id="${item.id}" data-title="${item.title}" data-desc="${item.description}" data-datetime="${item.dueDate}">Edit</button>
+                                        <button class="btn-delete" id="${item.id}">Delete</button>
+                                        <img src="./images/calendar.png" alt="calendar icon">
+                                        <time datetime="${item.dueDate}">${item.dueDate}</time>
+                                    </div>
+                                </div>
+                            `
+                        })
+                        htmlContent += `
+                            </div>
+                        `
+                    }
+                    document.querySelector('.mainbox').innerHTML = htmlContent;
+                })
+                .catch( err => {
+                    console.log(err);
+                })
+                // ------ End Re-write content ------- //
         })
         .catch( err => {
             console.log(err);
@@ -165,11 +206,16 @@ let editID = 0;
 document.querySelector('.mainbox').addEventListener('click', function(e) {
     if(e.target.classList.contains('btn-edit')) {
         modal.style.display = 'block';
+        editID = e.target.id;
         add.style.display = 'none';
         save.style.display = 'block';
-        editID = e.target.id;
+
+        document.querySelector('#title').value = e.target.dataset.title;
+        document.querySelector('#description').value = e.target.dataset.desc;
+        document.querySelector('#dueDate').value = e.target.dataset.datetime;
     }
 })
+
 function putData() {
 
     let id = editID;
@@ -203,8 +249,53 @@ function putData() {
                 throw response;
             }
         })
-        .then( resp => {
-            console.log(resp);
+        .then( data => {
+            console.log(data);
+            //------ Re-write content -------//
+            fetch(urlAPI, option)
+                .then( response => {
+                    if(response.ok) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                })
+                .then( data => {
+                    console.log(data);
+                    let htmlContent = ``;
+
+                    for(const list of data) {
+                        htmlContent += `
+                        <div class="task-list" data-id="${list.id}">
+                            <div class="cardTop">
+                                <h2>${list.title}</h2>
+                                <button class="add-todo" id="${list.id}">Add task</button>
+                            </div>
+                        `
+                        list.items.forEach(item => {
+                            htmlContent += `
+                                <div class="task">
+                                    <h3>${item.title}</h3>
+                                    <p>${item.description}</p>
+                                    <div class="date">
+                                        <button class="btn-edit" id="${item.id}" data-title="${item.title}" data-desc="${item.description}" data-datetime="${item.dueDate}">Edit</button>
+                                        <button class="btn-delete" id="${item.id}">Delete</button>
+                                        <img src="./images/calendar.png" alt="calendar icon">
+                                        <time datetime="${item.dueDate}">${item.dueDate}</time>
+                                    </div>
+                                </div>
+                            `
+                        })
+                        htmlContent += `
+                            </div>
+                        `
+                    }
+                    document.querySelector('.mainbox').innerHTML = htmlContent;
+                })
+                .catch( err => {
+                    console.log(err);
+                })
+                // ------ End Re-write content ------- //
         })
         .catch( err => {
             console.log(err);
@@ -236,13 +327,58 @@ document.querySelector('.mainbox').addEventListener('click', function(e) {
         fetch(urlAPIDelete, configDelete)
             .then( response => {
                 if(response.ok) {
-                    return response.json();
+                    return response.text();
                 } else {
                     throw response;
                 }
             })
-            .then( res => {
-                console.log(res);
+            .then( data => {
+                console.log(data);
+                //------ Re-write content -------//
+                fetch(urlAPI, option)
+                .then( response => {
+                    if(response.ok) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                })
+                .then( data => {
+                    console.log(data);
+                    let htmlContent = ``;
+
+                    for(const list of data) {
+                        htmlContent += `
+                        <div class="task-list" data-id="${list.id}">
+                            <div class="cardTop">
+                                <h2>${list.title}</h2>
+                                <button class="add-todo" id="${list.id}">Add task</button>
+                            </div>
+                        `
+                        list.items.forEach(item => {
+                            htmlContent += `
+                                <div class="task">
+                                    <h3>${item.title}</h3>
+                                    <p>${item.description}</p>
+                                    <div class="date">
+                                        <button class="btn-edit" id="${item.id}" data-title="${item.title}" data-desc="${item.description}" data-datetime="${item.dueDate}">Edit</button>
+                                        <button class="btn-delete" id="${item.id}">Delete</button>
+                                        <img src="./images/calendar.png" alt="calendar icon">
+                                        <time datetime="${item.dueDate}">${item.dueDate}</time>
+                                    </div>
+                                </div>
+                            `
+                        })
+                        htmlContent += `
+                            </div>
+                        `
+                    }
+                    document.querySelector('.mainbox').innerHTML = htmlContent;
+                })
+                .catch( err => {
+                    console.log(err);
+                })
+            // ------ End Re-write content ------- //
             })
             .catch( err => {
                 console.log(err);

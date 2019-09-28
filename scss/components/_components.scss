@@ -19,11 +19,19 @@
         box-shadow: $shadow;
         border-radius: .5em;
 
+        animation-name: modal-slide;
+        animation-duration: 2s;
+        animation-timing-function: ease-in-out;
+
         form {
             padding: 2em;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+
+            #listId {
+                display: none;
+            }
 
             input {
                 margin: 0 0 1em;
@@ -42,27 +50,50 @@
                 }
             }
 
-            .error {
-                width: 99%;
-                margin: -1.5em auto 1em auto;
-                padding: .6em;
-                font-size: 80%;
-                color: $main-bg-color;
-                background-color: $error-color;
-                -moz-box-sizing: border-box;
-                box-sizing: border-box;
-
-                .active {
-                    padding: 0.3em;
-                }
-            }
-
             textarea {
                 @extend input;
             }
 
-            #listId {
+            span {
                 display: none;
+            }
+
+            .error1 {
+                position: relative;
+                display: block;
+                width: 15.625em;
+                margin: -2.5em auto 1em auto;
+                padding: .6em;
+                font-size: 80%;
+                color: $main-bg-color;
+                text-align: center;
+                background-color: $error-color;
+                border-radius: .5em;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+
+                animation-name: error-slide;
+                animation-duration: .5s;
+                animation-timing-function: ease-in-out;
+
+                &:before {
+                    content: '';
+                    position: absolute;
+                    top: -4px;
+                    left: 20px;
+                    border: 4px solid $error-color;
+                    -webkit-transform: rotate(-45deg);
+                    -moz-transform: rotate(-45deg);
+                    -o-transform: rotate(-45deg);
+                    -ms-transform: rotate(-45deg);
+                    transform: rotate(-45deg);
+                }
+            }
+            .error2 {
+                @extend .error1;
+            }
+            .error3 {
+                @extend .error1;
             }
 
             .modalBottom {
@@ -134,7 +165,7 @@
     align-content: center;
     padding: 0.5em 0;
 
-    .select-wrapper {
+    #wrapper {
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
@@ -144,48 +175,81 @@
         margin: auto 0 auto 1em;
         padding: .2em;
         width: 4em;
-        height: 1.6em;
+        height: 4vh; // for Safari
+        min-height: 1.6em; // for Safari
+        max-height: 2em; // for Safari
         border-radius: 1.5em;
 
-        .selector {
+        #btn-selector {
             color: transparent;
-            background-color: $primary-color;
-            width: 40%;
-            height: auto;
-            border-radius: 2em;
-            border: none;
-            cursor: pointer;
-            outline:none;
-        }
-    }
-
-    .select-wrapper-dark {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        align-content: center;
-        background-color: $primary-color;
-        margin: auto 0 auto 1em;
-        padding: .2em;
-        width: 4em;
-        height: 1.6em;
-        border-radius: 1.5em;
-
-        .selector-dark {
             background-color: #060b17;
-            width: 40%;
+            width: 20%;
             height: auto;
             border-radius: 2em;
-            border: none;
+            border: 12px solid $primary-color;
             cursor: pointer;
             outline:none;
+            transition: background-color 0.5s linear;
+            transition: margin-left 0.3s ease;
+
+            &:hover {
+                margin-left: .3em;
+            }
         }
+        
     }
 
     h2 {
         color: $main-bg-color;
         text-transform: capitalize;
-        //padding: 0 !important;
     }
 }
-  
+
+.select-wrapper-dark {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end !important;
+    align-content: center;
+    background-color: rgba(31, 198, 177, 0.7) !important;
+    box-shadow: 0 8px 6px -6px inset rgba(0, 0, 0, 0.7) !important;
+    margin: auto 0 auto 1em;
+    padding: .2em;
+    width: 4em;
+    height: 4vh;
+    min-height: 1.6em;
+    max-height: 2em;
+    border-radius: 1.5em;
+}
+.selector-dark {
+    background-color: $primary-color !important;
+    border: 12px solid #060b17 !important;
+    transition: background-color 0.5s linear;
+    transition: margin-right 0.3s ease;
+
+    &:hover {
+        margin-right: .3em;
+    }
+}
+
+// ------------------- Animations ---------------------- //
+@keyframes modal-slide {
+    from {
+        opacity: 0;
+        transform: translateY(150px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes error-slide {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
